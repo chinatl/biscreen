@@ -248,7 +248,7 @@ function pic2(arrdata,  str) {
 						show: true,
 						position: 'top',
 						textStyle: {
-							color: '#FFF',
+							color: '#43BDEB',
 							fontWeight: 'Bold',
 							fontSize: 14,
 						},
