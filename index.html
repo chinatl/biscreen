@@ -263,6 +263,7 @@
     <script src='./js/pro.js'></script>
     <script src='./js/map.js'></script>
     <script src='./js/pic.js'></script>
+    <script src='./js/pic2.js'></script>
     <script src='./js/baofei.js'></script>
     <script>
         $(function() {
@@ -617,6 +618,7 @@
             var arrTitle = [];
             var kaimenData = [];
             var baofeiData = [];
+			var dataPlan = [];
             var index = 1;
             var progressP = '';
             var progressP10 = '';
@@ -670,7 +672,7 @@
                         init();
                         flag = false;
                     }
-
+					
                 });
                 stompClient.subscribe('/topic/top-today-prem-sales', function(greeting) {
                     var datalist = JSON.parse(greeting.body);
@@ -683,11 +685,11 @@
                 stompClient.subscribe('/topic/in-force-prem', function(data) {
                     var datalist = JSON.parse(data.body);
                     var newArr = datalist.subsidiary;
-                    console.log(datalist);
-
                     for (var i = 0; i < newArr.length; i++) {
                         picdata0[i] = {};
                         picdata0[i].data = threenum(newArr[i].premP);
+                        picdata0[i].premPPeriod = threenum(newArr[i].premPPeriod);
+                        picdata0[i].premPPeriod10GE = threenum(newArr[i].premPPeriod10GE);
                         picdata0[i].branch = newArr[i].branch;
 
                         picdata1[i] = {};
@@ -711,15 +713,19 @@
                         baofei(baofeiData)
                     }
                 });
-                stompClient.subscribe('/topic/in-force-prem-target', function(greeting) {
-                    var datalist = JSON.parse(greeting.body);
-                   if (datalist.length === 0) {
-                        return;
-                    }
-                    progressP = datalist.premPPeriod;
-                    progressP10 = datalist.premPPeriod10;
-                    console.log(datalist);
-                });
+//                stompClient.subscribe('/topic/in-force-prem-target', function(greeting) {
+//                    var datalist = JSON.parse(greeting.body);
+//					var  newArr = datalist.subsidiary;
+//                   	if (newArr.length === 0) {
+//                        return;
+//                    }
+//					for(var i =0;i<newArr.length;i++){
+//					 	dataPlan[i] = {};
+//                        dataPlan[i].premPPeriod = newArr[i].premPPeriod;
+//                        dataPlan[i].premPPeriod10 = newArr[i].premPPeriod10;
+//                        dataPlan[i].branch = newArr[i].branch;
+//					}
+//                });
                 stompClient.subscribe('/topic/top-sales-hugecontract',function(data){
                     var datalist = JSON.parse(data.body);
                     if (datalist.length === 0) {
@@ -751,7 +757,7 @@
                 var d = 0;
                 var num = 0;
                 pro(geArr);
-                pic(picdata0);
+                pic2(picdata0,"期交");
                 scroll(arrTitle[0], 30);
                 var lis = $('.tabitem ul li');
                 if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
@@ -762,9 +768,7 @@
                 var timer2 = setInterval(function() {
                     num += 5;
                     if (num == 5) {
-                console.log(arrTitle)
-
-                        pic(picdata0);
+                        pic2(picdata0,"期交");
                         scroll(arrTitle[0], 30);
                         pro(geArr)
                         animatetitle('个险', geObj)
@@ -779,23 +783,22 @@
                             $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
                         }
                     }else if (num == timerP/2){
+						pic2(picdata0,dataPlan,"十年期");
                         $('#animateTop div').css('fontSize','42px')
                         ranking(1);
                         top10(0,false);
                         scroll(arrTitle[3]);
                         animatename('个险十年期');
                          if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
-
                         }else {
                             $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
-                            
                         }
                     } 
                     else if (num  == timerP) {
                         $('#animateTop div').css('fontSize','48px')
                         ranking(1);
                         top10(1,false);
-                        pic(picdata1)
+                        pic2(picdata1)
                         scroll(arrTitle[1], 30);
                         pro(yinArr)
                         animatetitle('银保', yinObj)
