@@ -683,6 +683,8 @@
                 stompClient.subscribe('/topic/in-force-prem', function(data) {
                     var datalist = JSON.parse(data.body);
                     var newArr = datalist.subsidiary;
+                    console.log(datalist);
+
                     for (var i = 0; i < newArr.length; i++) {
                         picdata0[i] = {};
                         picdata0[i].data = threenum(newArr[i].premP);
@@ -716,6 +718,7 @@
                     }
                     progressP = datalist.premPPeriod;
                     progressP10 = datalist.premPPeriod10;
+                    console.log(datalist);
                 });
                 stompClient.subscribe('/topic/top-sales-hugecontract',function(data){
                     var datalist = JSON.parse(data.body);
@@ -754,11 +757,13 @@
                 if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
 
                 }else {
-                    $('#progressnum').html((progressP/arrTitle[0]*100).toFixed(1)  + '%');
+                    $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
                 }
                 var timer2 = setInterval(function() {
                     num += 5;
                     if (num == 5) {
+                console.log(arrTitle)
+
                         pic(picdata0);
                         scroll(arrTitle[0], 30);
                         pro(geArr)
@@ -771,7 +776,7 @@
                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
 
                         }else {
-                            $('#progressnum').html((progressP/arrTitle[0]*100).toFixed(1)  + '%');
+                            $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
                         }
                     }else if (num == timerP/2){
                         $('#animateTop div').css('fontSize','42px')
@@ -782,7 +787,8 @@
                          if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
 
                         }else {
-                            $('#progressnum').html((progressP10/arrTitle[3]*100).toFixed(1)  + '%');
+                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
+                            
                         }
                     } 
                     else if (num  == timerP) {
