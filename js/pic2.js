@@ -253,7 +253,7 @@ function pic2(arrdata,  str) {
 							fontSize: 14,
 						},
 						formatter: function (params) {
-							return seriesdata[params.dataIndex] + "万" + "\n" + (seriesdata[params.dataIndex] / newarrPlan[params.dataIndex] * 100).toFixed(2) + "%"
+							return seriesdata[params.dataIndex] + "\n" + (seriesdata[params.dataIndex] / newarrPlan[params.dataIndex] * 100).toFixed(2) + "%"
 						}
 					}
 				},
