@@ -20,7 +20,7 @@ function baofei(arr) {
             left: '3%',
             right: '7%',
             bottom: '3%',
-            top:"10%",
+            top:"12%",
             containLabel: true
         },
         xAxis: {

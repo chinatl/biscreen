@@ -176,7 +176,8 @@
                     <p class="boxtitle_en">Interaction</p>
                 </div>
                 <div class="today_say boxborder">
-						<div class="wait">暂未开启，敬请期待!</div>
+						<div class="wait">
+                        三秦个险十路大军，全线冲锋旗开得胜！期待陕国寿2018捷报频传，开门大红！</div>
 					 <div class="erweima fr">
 						<div id="qrcode"></div>
 						<div>该功能仅在大屏上可用</div>
@@ -639,12 +640,22 @@
             var index = 1;
             var progressP = '';
             var progressP10 = '';
-            var socket = new SockJS('http://10.184.1.22:7001/websocket');
+            function getQueryString(){
+                var URL = location.search;
+                if(URL.indexOf('dev=1') !== -1){
+                    return '7001'
+                }else{
+                    return '17001'
+                }
+            }
+            var PORT = getQueryString();
+            var socket = new SockJS('http://10.184.1.22:'+PORT+'/websocket');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function(frame) {
                 var flag = true;
                 var flag1 = false;
                 stompClient.subscribe('/topic/today-prem', function(greeting) {
+					console.log(data);
                     var data = JSON.parse(greeting.body);
                     var newArr = data.subsidiary;
                     var geSortArr = sortArr(newArr, 'premP')

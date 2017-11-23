@@ -443,9 +443,10 @@ body {
     color: #fff;
 }
 .wait {
+    width: 1050px;
 	font: 40px;
 	padding: 20px;
-	color: #fff;
+	color: #F30140;
 	float: left;
 }
 .erweima {
