@@ -10,8 +10,6 @@ function baofei(arr) {
         data[arr.length - i - 1] = arr[i].prem;
         dataAxis[arr.length - i - 1] = fn(arr[i].date);
     }
-    console.log(data)
-    console.log(dataAxis)
     var yMax = 500;
     var dataShadow = [];
     for (var i = 0; i < data.length; i++) {

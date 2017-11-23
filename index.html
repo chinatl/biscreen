@@ -764,15 +764,15 @@
                         $('.bigscore').html(animateten(datalist));
                     },3000)
                 })
-                stompClient.subscribe('/topic/top-sales-yearprem',function(data){
-                    var datalist = JSON.parse(data.body);
-                     if (datalist.length === 0) {
-                        return;
-                    }
-                    setTimeout(function(){
-                        $('.onepeoson').html(animateten(datalist))
-                    })
-                })
+                // stompClient.subscribe('/topic/top-sales-yearprem',function(data){
+                //     var datalist = JSON.parse(data.body);
+                //      if (datalist.length === 0) {
+                //         return;
+                //     }
+                //     setTimeout(function(){
+                //         $('.onepeoson').html(animateten(datalist))
+                //     })
+                // })
                 socket.onclose = function() {
                     if (confirm('服务器断开连接，请重新连接')) {
                         location.reload();
