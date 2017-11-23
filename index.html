@@ -19,6 +19,7 @@
     <script src='./js/stomp.min.js'></script>
     <script src='./js/branchCode.js'></script>
     <script src='js/countUp.min.js'></script>
+	<script type="text/javascript" src="js/qrcode.min.js"></script>
 </head>
 
 <body>
@@ -104,10 +105,12 @@
                 <div class='todayItem boxborder'>
                 <div class="ranking">
                     <ul>
+<!--
                         <li>
-                        <img src="images/icon1.png" alt="">
+                        	<img src="images/icon1.png" alt="">
                             <span>个人累计</span>
                         </li>
+-->
                         <li>
                          <img src="images/icon2.png" alt="">
                             <span>大单排行</span>
@@ -124,18 +127,21 @@
                 </div>
                 <div class='maxbox'>
                     <div class='rankingBox'>
+<!--
                         <div class="rankinglist">
                             <div class="bigtable">个人累计TOP10</div>
                             <ul class="animateten onepeoson">
                                 
                             </ul>
                         </div>
+-->
                         <div class="rankinglist">
                             <div class="bigtable">大单排行TOP10</div>
                             <ul class="animateten bigscore">
                                
                             </ul>
                         </div>
+<!--
                         <div class="rankinglist">
                             <div class="bigtable">大单排行TOP10</div>
                             <ul class="animateten nulldata">
@@ -148,6 +154,7 @@
                               
                             </ul>
                         </div>
+-->
                     </div>
                 </div>
             </div>
@@ -163,15 +170,20 @@
                     <div id="baofei"></div>
                 </div>
             </div>
-            <div class="inter fl">
+            <div class="inter fr">
                 <div class='boxtitle righttitle'>
                     <p class="boxtitle_cn">互动交流</p>
                     <p class="boxtitle_en">Interaction</p>
                 </div>
                 <div class="today_say boxborder">
-                    暂未开启，敬请期待！
+						<div class="wait">暂未开启，敬请期待!</div>
+					 <div class="erweima fr">
+						<div id="qrcode"></div>
+						<div>该功能仅在大屏上可用</div>
+					</div>
                 </div>
             </div>
+<!--
             <div class="express fr">
                 <div class='boxtitle righttitle'>
                     <p class="boxtitle_cn">大单快报</p>
@@ -181,6 +193,7 @@
                     <img src="images/opendoorred.png" alt="" id="opendoorred">
                 </div>
             </div>
+-->
         </div>
         <!--        弹出层-->
         <div class="layout">
@@ -323,7 +336,11 @@
                 changeYMD(txt0);
                 changeHMS(txt1);
             })
-
+			var qrcode = new QRCode(document.getElementById("qrcode"), {
+                           width: 150,
+                           height: 150
+                       });
+		   qrcode.makeCode('该二维码仅在大屏开启时可用');
             function changeYMD(str) {
                 $($('.year img')[0]).attr('src', 'images/x' + str[0] + '.png');
                 $($('.year img')[1]).attr('src', 'images/x' + str[1] + '.png');
@@ -480,15 +497,15 @@
                     $('#geAll').css('display', 'none');
                     $('#tuanAll').css('display', 'block');
                 }
-                var strtitle = str[0] + '' + str[1];
-                var titles = $('#scrollTitle').find('div');
-                $(titles[1]).html(strtitle + '期交');
-                $('#scrollTitle').animate({
-                    'top': -29
-                }, 500, function() {
-                    $(titles[0]).html(strtitle + '期交');
-                    $('#scrollTitle').css('top', 0);
-                });
+//                var strtitle = str[0] + '' + str[1];
+//                var titles = $('#scrollTitle').find('div');
+//                $(titles[1]).html(strtitle + '期交');
+//                $('#scrollTitle').animate({
+//                    'top': -29
+//                }, 500, function() {
+//                    $(titles[0]).html(strtitle + '期交');
+//                    $('#scrollTitle').css('top', 0);
+//                });
             } //[保费，团险，人险]
             function animatetxt(arr) {
                 var titles = $('#scrollContent').find('div');
@@ -740,6 +757,8 @@
                      if (datalist.length === 0) {
                         return;
                     }
+										console.log(datalist)
+
                     setTimeout(function(){
                         $('.onepeoson').html(animateten(datalist))
                     })
@@ -772,51 +791,50 @@
                         scroll(arrTitle[0], 30);
                         pro(geArr)
                         animatetitle('个险', geObj)
-                        animatename('个险期交');
                         $(lis).removeClass('current');
                         $(lis[0]).addClass('current');
-                        ranking(0);
                         top10(-1,true);
                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
 
                         }else {
                             $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
                         }
-                    }else if (num == timerP/2){
-						pic2(picdata0,dataPlan,"十年期");
-                        $('#animateTop div').css('fontSize','42px')
-                        ranking(1);
-                        top10(0,false);
-                        scroll(arrTitle[3]);
-                        animatename('个险十年期');
-                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
-                        }else {
-                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
-                        }
-                    } 
-                    else if (num  == timerP) {
-                        $('#animateTop div').css('fontSize','48px')
-                        ranking(1);
-                        top10(1,false);
-                        pic2(picdata1)
-                        scroll(arrTitle[1], 30);
-                        pro(yinArr)
-                        animatetitle('银保', yinObj)
-                        animatename('银保期交');
-                        $(lis).removeClass('current');
-                        $(lis[1]).addClass('current');
-                        $('#progressnum').html('0%')
-                    } else if (num == timerB+timerP){
-
-                        // pic(picdata2)
-                        // scroll(arrTitle[2], 30);
-                        // pro(tuanArr)
-                        // animatetitle('团险', tuanObj);
-                        // animatename('团险');
-                        // $(lis).removeClass('current');
-                        // $(lis[2]).addClass('current');
-                        num = 0;
+						num = 0;
                     }
+//						else if (num == timerP/2){
+//						pic2(picdata0,dataPlan,"十年期");
+//                        $('#animateTop div').css('fontSize','42px')
+//                        top10(0,false);
+//                        scroll(arrTitle[3]);
+//                        animatename('个险十年期');
+//                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
+//                        }else {
+//                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
+//                        }
+//                    } 
+//                    else if (num  == timerP) {
+//						
+//                        $('#animateTop div').css('fontSize','48px')
+//                        top10(1,false);
+//pic2(picdata1)
+//                        scroll(arrTitle[1], 30);
+//                        pro(yinArr);
+//						num = 0;
+//                        animatetitle('银保', yinObj)
+//                        animatename('银保期交');
+//                        $(lis).removeClass('current');
+//                        $(lis[1]).addClass('current');
+//                        $('#progressnum').html('0%')
+//                    } else if (num == timerB+timerP){
+//                         pic(picdata2)
+//                         scroll(arrTitle[2], 30);
+//                         pro(tuanArr)
+//                         animatetitle('团险', tuanObj);
+//                         animatename('团险');
+//                         $(lis).removeClass('current');
+//                         $(lis[2]).addClass('current');
+//                        num = 0;
+//                    }
                 }, 5000);
             }
         })

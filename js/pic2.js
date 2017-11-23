@@ -1,5 +1,4 @@
 function pic2(arrdata,  str) {
-	console.log(arrdata)
 	function compare(property) {
 		return function (a, b) {
 			var value1 = a[property];
@@ -119,7 +118,6 @@ function pic2(arrdata,  str) {
 	}else {
 		arr = filter(premPPeriod10GE);
 	}
-	console.log(arr)
 	var xData = arr[0];
 	var seriesdata = arr[1];
 	var gap = arr[2];
@@ -127,10 +125,10 @@ function pic2(arrdata,  str) {
 	var newarrPlan = arr[4];
 	var option = {
 		grid: {
-			left: '1%',
-			right: '1%',
-			bottom: '1%',
-			top: '2%',
+			left: '%',
+			right: '2%',
+			bottom: '4%',
+			top: '4%',
 			containLabel: true
 		},
 		xAxis: {
@@ -223,7 +221,7 @@ function pic2(arrdata,  str) {
 					}
 				},
 				animation: false,
-				data: seriesdata,
+				data: seriesdata
         },
 			{
 				type: 'bar',
@@ -236,7 +234,6 @@ function pic2(arrdata,  str) {
 					}
 				},
 				animation: false,
-				data: gap
         },
 			{
 				type: 'bar',

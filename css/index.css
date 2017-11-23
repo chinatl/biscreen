@@ -421,7 +421,7 @@ body {
 }
 
 .today_baofei {
-    width: 473px;
+    width: 469px;
     height: 217px;
 }
 
@@ -432,16 +432,39 @@ body {
 
 .bottomarea .inter {
     position: relative;
-    margin-left: 30px;
 }
 
 .today_say {
-    width: 820px;
+    width: 1337px;
     height: 217px;
     box-sizing: border-box;
     padding: 18px 0 0 32px;
     font-size: 40px;
     color: #fff;
+}
+.wait {
+	font: 40px;
+	padding: 20px;
+	color: #fff;
+	float: left;
+}
+.erweima {
+    width: 192px;
+    height: 193px;
+    border-radius: 8px;
+}
+
+.erweima #qrcode {
+	text-align: center;
+	margin: 0 auto;
+	width: 150px;
+    height: 150px;
+    border-radius: 4px;
+}
+.erweima div {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 10px;
 }
 .express_bottom {
     width: 460px;  
