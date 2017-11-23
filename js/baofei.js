@@ -10,6 +10,8 @@ function baofei(arr) {
         data[arr.length - i - 1] = arr[i].prem;
         dataAxis[arr.length - i - 1] = fn(arr[i].date);
     }
+    console.log(data)
+    console.log(dataAxis)
     var yMax = 500;
     var dataShadow = [];
     for (var i = 0; i < data.length; i++) {
@@ -18,9 +20,9 @@ function baofei(arr) {
     option = {
         grid: {
             left: '3%',
-            right: '7%',
+            right: '2%',
             bottom: '3%',
-            top:"12%",
+            top:"20%",
             containLabel: true
         },
         xAxis: {
@@ -28,8 +30,7 @@ function baofei(arr) {
             axisLabel: {
                 textStyle: {
                     color: '#43BDEB',
-                    fontSize:18
-
+                    fontSize:14
                 }
             },
             axisTick: {
@@ -38,13 +39,13 @@ function baofei(arr) {
             axisLine: {
                 // show: false
             },
-            splitLine: {
-                show: false,
-                lineStyle: {
-                    color: '#fff', //21005B
-                    width: 1,
-                }
-            },
+            // splitLine: {
+            //     show: false,
+            //     lineStyle: {
+            //         color: '#fff', //21005B
+            //         width: 1,
+            //     }
+            // },
         },
         yAxis: {
             splitLine: {
@@ -86,6 +87,18 @@ function baofei(arr) {
                         borderWidth: 5,
                     },
                 },
+                markPoint: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {type: 'min', name: '最小值'}
+                    ],
+                    itemStyle:{
+                        normal:{
+                            color:'#0479c3',
+                            fontSize: 16
+                        }
+                    }
+                },
                 areaStyle: {
                     normal: {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -117,6 +130,5 @@ function baofei(arr) {
     };
 
     // Enable data zoom when user click bar.
-    var zoomSize = 6;
     chart.setOption(option);
 }

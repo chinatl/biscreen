@@ -12,7 +12,7 @@ function pic(arrdata) {
     var chart = echarts.init(document.getElementById('pic'));
     var yMax = 500;
     var dataShadow = [];
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < arrdata.length; i++) {
         dataShadow.push(yMax);
     }
     var data1 = [];

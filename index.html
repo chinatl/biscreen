@@ -103,7 +103,7 @@
                     <p class="boxtitle_en">Ranking List</p>
                 </div>
                 <div class='todayItem boxborder'>
-                <div class="ranking">
+                <div class="ranking"  style="display: none">
                     <ul>
 <!--
                         <li>
@@ -136,7 +136,7 @@
                         </div>
 -->
                         <div class="rankinglist">
-                            <div class="bigtable">大单排行TOP10</div>
+                            <div class="bigtable">今日大单排行TOP10</div>
                             <ul class="animateten bigscore">
                                
                             </ul>
@@ -640,6 +640,7 @@
             var index = 1;
             var progressP = '';
             var progressP10 = '';
+            var mapData = {};
             function getQueryString(){
                 var URL = location.search;
                 if(URL.indexOf('dev=1') !== -1){
@@ -655,9 +656,9 @@
                 var flag = true;
                 var flag1 = false;
                 stompClient.subscribe('/topic/today-prem', function(greeting) {
-					console.log(data);
                     var data = JSON.parse(greeting.body);
                     var newArr = data.subsidiary;
+                    mapData = data.subsidiary;
                     var geSortArr = sortArr(newArr, 'premP')
                     var yinSortArr = sortArr(newArr, 'premB')
                     var tuanSortArr = sortArr(newArr, 'premG')
@@ -768,8 +769,6 @@
                      if (datalist.length === 0) {
                         return;
                     }
-										console.log(datalist)
-
                     setTimeout(function(){
                         $('.onepeoson').html(animateten(datalist))
                     })
@@ -787,7 +786,8 @@
                 var d = 0;
                 var num = 0;
                 pro(geArr);
-                pic2(picdata0,"期交");
+                pic(picdata0,"期交");
+                map(mapData)
                 scroll(arrTitle[0], 30);
                 var lis = $('.tabitem ul li');
                 if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
@@ -798,7 +798,7 @@
                 var timer2 = setInterval(function() {
                     num += 5;
                     if (num == 5) {
-                        pic2(picdata0,"期交");
+                        pic(picdata0,"期交");
                         scroll(arrTitle[0], 30);
                         pro(geArr)
                         animatetitle('个险', geObj)

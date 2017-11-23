@@ -1,5 +1,16 @@
+function map(arrlist){
 echarts.registerMap('shannxi', shannxijson); //hennanJson名称取自henan.js里的var  henanJson变量名
 var chart = echarts.init(document.getElementById('map'));
+function convertData(data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].branch];
+        if (geoCoord) {
+            res.push(geoCoord.concat(data[i].amnt));
+        }
+    }
+    return res;
+};
 var geoCoordMap = {
     "610002": [108.55, 34.15],
     "610151": [108.56, 34, 14],
@@ -651,13 +662,6 @@ chart.setOption({
     }]
 })
 
-function convertData(data) {
-    var res = [];
-    for (var i = 0; i < data.length; i++) {
-        var geoCoord = geoCoordMap[data[i].branch];
-        if (geoCoord) {
-            res.push(geoCoord.concat(data[i].amnt));
-        }
-    }
-    return res;
-};
+
+
+}

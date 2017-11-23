@@ -309,7 +309,7 @@ body {
 }
 .maxbox {
     width: 410px;
-    height: 530px;
+    height: 580px;
     overflow:hidden;
     position: relative;
 }
@@ -318,6 +318,7 @@ body {
     font: normal normal 30px "微软雅黑";
     text-align: right;
     width: 405px;
+    margin-bottom: 15px;
 }
 
 .list .rankingBox {
@@ -342,7 +343,7 @@ body {
     margin: 0px auto;
     color: #43BDEB;
     font-size: 22px;
-    height: 500px;
+    height: 550px;
 }
 .list .animateten li:nth-of-type(-n+3) {
     padding: 0 0px;
@@ -358,8 +359,9 @@ body {
     margin-top: 4px;
     display: flex;
     justify-content: space-around;
-    height: 40px;
+    height: 41px;
     line-height: 40px;
+    margin-top: 11px;
     background: linear-gradient(to right, transparent 21%, #0b1e4e);
 }
 /*得分*/
