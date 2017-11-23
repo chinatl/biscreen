@@ -41,7 +41,7 @@
                         <li><img src="images/number0.png" alt=""></li>
                         <li class="white"></li>
                         <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number6.png" alt=""></li>
+                        <li><img src="images/number0.png" alt=""></li>
                         <li><img src="images/number0.png" alt=""></li>
                         <li class="white"></li>
                         <li><img src="images/number0.png" alt=""></li>
@@ -77,15 +77,15 @@
                             <ul id="period">
                                 <li>
                                     <p class="block"><b class="threeC"></b>3年期</p>
-                                    <p>156.45</p>
+                                    <p>0</p>
                                 </li>
                                 <li>
                                     <p class="block"><b class="fiveC"></b>5-9年期</p>
-                                    <p>156.45</p>
+                                    <p>0</p>
                                 </li>
                                 <li>
                                     <p class="block"><b class="tenC"></b>10年期及以上</p>
-                                    <p>3,156.45</p>
+                                    <p>0</p>
                                 </li>
                             </ul>
                         </div>
@@ -429,7 +429,7 @@
                     for (var i = 0; i < arrlist.length; i++) {
                         var a = arrlist[i].salesBranchCode;
                         var val = branchCode[a];
-                        var x = Math.round(arrlist[i].prem / 1000) + '万'
+                        var x = Math.round(arrlist[i].prem / 10000) + '万'
                         emptyArr.push('<li>' +
                             '<span class="score' + (i + 1) + '">' + (i + 1) + '</span>' +
                             '<span>' + val + '</span>' +
@@ -445,7 +445,7 @@
                     for (var i = 0; i < arrlist.length; i++) {
                         var a = arrlist[i].salesBranchCode;
                         var val = branchCode[a];
-                        var x = Math.round(arrlist[i].prem / 1000) + '万'
+                        var x = Math.round(arrlist[i].prem / 10000) + '万'
                         emptyArr.push('<li>' +
                             '<span>' + (number + i + 1) + '</span>' +
                             '<span>' + val + '</span>' +
@@ -757,10 +757,15 @@
 //                });
                 stompClient.subscribe('/topic/top-sales-hugecontract',function(data){
                     var datalist = JSON.parse(data.body);
+                    console.log(datalist);
                     if (datalist.length === 0) {
                         return;
                     }
                     setTimeout(function(){
+                    	var x = animateten(datalist);
+                    	if(x.indexOf('undefined') !== -1){
+                    		return 
+                    	}
                         $('.bigscore').html(animateten(datalist));
                     },3000)
                 })
@@ -788,7 +793,9 @@
                 pro(geArr);
                 pic(picdata0,"期交");
                 map(mapData)
-                scroll(arrTitle[0], 30);
+                if(arrTitle[0] !== 0){
+                	scroll(arrTitle[0], 30);
+                }
                 var lis = $('.tabitem ul li');
                 if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
 
@@ -799,7 +806,9 @@
                     num += 5;
                     if (num == 5) {
                         pic(picdata0,"期交");
-                        scroll(arrTitle[0], 30);
+                        if(arrTitle[0] !== 0){
+                        	scroll(arrTitle[0], 30);
+                        }
                         pro(geArr)
                         animatetitle('个险', geObj)
                         $(lis).removeClass('current');
