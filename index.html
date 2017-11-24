@@ -641,6 +641,7 @@
             var progressP = '';
             var progressP10 = '';
             var mapData = {};
+            var littleData = 0;
             function getQueryString(){
                 var URL = location.search;
                 if(URL.indexOf('dev=1') !== -1){
@@ -720,6 +721,12 @@
                     if(newArr.length == 0){
                     	return 
                     }
+                    if(datalist.premPPeriod > littleData){
+                        littleData = datalist.premPPeriod;
+                    }
+                    if(datalist.premPPeriod < littleData){
+                        return 
+                    }
                     for (var i = 0; i < newArr.length; i++) {
                         picdata0[i] = {};
                         picdata0[i].data = threenum(newArr[i].premP);
@@ -739,6 +746,7 @@
                     arrTitle[1] = datalist.premB;
                     arrTitle[2] = datalist.premG;
                     arrTitle[3] = datalist.premPPeriod10GE;
+                    console.log( arrTitle[0] )
                     flag1 = true;
                 })
                 stompClient.subscribe('/topic/daily-prem', function(greeting) {
