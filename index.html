@@ -658,6 +658,9 @@
                 stompClient.subscribe('/topic/today-prem', function(greeting) {
                     var data = JSON.parse(greeting.body);
                     var newArr = data.subsidiary;
+                    if(newArr.length == 0){
+                    	return 
+                    }
                     mapData = data.subsidiary;
                     var geSortArr = sortArr(newArr, 'premP')
                     var yinSortArr = sortArr(newArr, 'premB')
@@ -757,7 +760,6 @@
 //                });
                 stompClient.subscribe('/topic/top-sales-hugecontract',function(data){
                     var datalist = JSON.parse(data.body);
-                    console.log(datalist);
                     if (datalist.length === 0) {
                         return;
                     }
@@ -806,10 +808,10 @@
                     num += 5;
                     if (num == 5) {
                         pic(picdata0,"期交");
-                        if(arrTitle[0] !== 0){
+                        if(typeof arrTitle[0] !== 'object' ){
                         	scroll(arrTitle[0], 30);
                         }
-                        pro(geArr)
+                        pro(geArr);
                         animatetitle('个险', geObj)
                         $(lis).removeClass('current');
                         $(lis[0]).addClass('current');
