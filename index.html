@@ -717,6 +717,9 @@
                 stompClient.subscribe('/topic/in-force-prem', function(data) {
                     var datalist = JSON.parse(data.body);
                     var newArr = datalist.subsidiary;
+                    if(newArr.length == 0){
+                    	return 
+                    }
                     for (var i = 0; i < newArr.length; i++) {
                         picdata0[i] = {};
                         picdata0[i].data = threenum(newArr[i].premP);
