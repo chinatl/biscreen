@@ -56,6 +56,7 @@ body {
     height: 639px;
     padding: 24px 20px 0px 29px;
     box-sizing: border-box;
+	position: relative;
 }
 
 
@@ -280,7 +281,88 @@ body {
 }
 
 
-/*right*/
+/*right */
+#checkList {
+	cursor: pointer;
+}
+#selectList {
+	width: 220px;		
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #fff;
+    line-height: 36px;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 28px;
+    outline: none;
+	padding: 10px 0;
+    background-color: #fff;
+    border: 1px solid #e6ebf5;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+	z-index: 10;
+	display: none
+}
+#selectList .selectli {
+	overflow: hidden;
+	padding: 5px;
+	width: 100%;
+	box-sizing: border-box;
+}
+#selectList .selectli li {
+	color: #5a5e66;
+	text-align: right;
+	font-size: 21px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	width: 45%;
+	margin: 5px;
+}
+#selectList p {
+	margin: 0 auto;
+	text-align: center;
+	padding: 0;
+}
+#selectList p button{
+   
+	display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #d8dce5;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 24px;
+    border-radius: 4px;
+ 	background-color: #409eff;
+    border-color: #409eff;
+	color: #fff;
+
+}
+.selectTitle {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+}
+#selectList .selectli li.current{
+	background-color: #ECF5FF;
+	color:#66B1FF
+}
+#selectList .selectli li:hover{
+	background-color: #ECF5FF;
+	color:#66B1FF
+}
 .list .ranking {
     margin:10px 0;
 }

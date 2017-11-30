@@ -28,8 +28,9 @@ function baofei(arr) {
             axisLabel: {
                 textStyle: {
                     color: '#43BDEB',
-                    fontSize:14
-                }
+                    fontSize:14,
+                },
+                // interval:0
             },
             axisTick: {
                 show: false

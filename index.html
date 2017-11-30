@@ -2,120 +2,149 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=8">
-<meta http-equiv="Expires" content="0">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-control" content="no-cache">
-<meta http-equiv="Cache" content="no-cache"> 
-    <title>中国人寿陕西省分公司作战指挥室</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <script src='./js/echarts.min.js'></script>
-    <script src='./js/shannxi.js'></script>
-    <script src='./js/jquery.min.js'></script>
-    <script src='./js/sock.js'></script>
-    <script src='./js/stomp.min.js'></script>
-    <script src='./js/branchCode.js'></script>
-    <script src='js/countUp.min.js'></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache">
+	<meta http-equiv="Cache" content="no-cache">
+	<title>中国人寿陕西省分公司作战指挥室</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<script src='./js/echarts.min.js'></script>
+	<script src='./js/shannxi.js'></script>
+	<script src='./js/jquery.min.js'></script>
+	<script src='./js/sock.js'></script>
+	<script src='./js/stomp.min.js'></script>
+	<script src='./js/branchCode.js'></script>
+	<script src='js/countUp.min.js'></script>
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="bgTitle">
-            <div class="bgTitleArea">
-                <div class="t">
-                    <div id="animateTop">
-                        <div>开门红个险期交</div>
-                        <div>开门红个险期交</div>
-                    </div>
-                </div>
-                <div class="scrollnumber">
-                    <ul>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li class="white"></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li class="white"></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li class="white"></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                        <li><img src="images/number0.png" alt=""></li>
-                    </ul>
-                </div>
-                <div class="progress">开门红进度:<span id='progressnum'>0%</span></div>
-                <div class="chartpro boxborder">
-                    <span id='chartshow'>单位:万元</span>
-                    <div id="pic"></div>
-                </div>
-            </div>
-        </div>
-        <div class="toparea">
-            <div class="today">
-                <div class='boxtitle wanyuan'>
-                    <p class="boxtitle_cn">当日录单</p>
-                    <p class="boxtitle_en">Daily Inputting Premium</p>
-                </div>
-                <div class='todayItem boxborder'>
-                    <div class="provice_top">
-                        <div class="provice_title">
-                            <div id="scrollTitle">
-                                <div>个险期交</div>
-                                <div>团险期交</div>
-                            </div>
-                        </div>
-                        <div class="provice_mid">
-                            <h3 id="geAll">0</h3>
-                            <h3 id="tuanAll">0</h3>
-                            <h3 id="yinAll">0</h3>
-                            <ul id="period">
-                                <li>
-                                    <p class="block"><b class="threeC"></b>3年期</p>
-                                    <p>0</p>
-                                </li>
-                                <li>
-                                    <p class="block"><b class="fiveC"></b>5-9年期</p>
-                                    <p>0</p>
-                                </li>
-                                <li>
-                                    <p class="block"><b class="tenC"></b>10年期及以上</p>
-                                    <p>0</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="provice_bottom">
-                        <div id="pro"></div>
-                        <div id="map"></div>
-                    </div>
-                </div>
+	<div class="container">
+		<div class="bgTitle">
+			<div class="bgTitleArea">
+				<div class="t">
+					<div id="animateTop">
+						<div>开门红个险期交</div>
+						<div>开门红个险期交</div>
+					</div>
+				</div>
+				<div class="scrollnumber">
+					<ul>
+						<li><img src="images/number0.png" alt=""></li>
+						<li class="white"></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li class="white"></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li class="white"></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+						<li><img src="images/number0.png" alt=""></li>
+					</ul>
+				</div>
+				<div class="progress">开门红进度:<span id='progressnum'>0%</span></div>
+				<div class="chartpro boxborder">
+					<span id='chartshow'>单位:万元</span>
+					<div id="pic"></div>
+				</div>
+			</div>
+		</div>
+		<div class="toparea">
+			<div class="today">
+				<div class='boxtitle wanyuan'>
+					<p class="boxtitle_cn">当日录单</p>
+					<p class="boxtitle_en">Daily Inputting Premium</p>
+				</div>
+				<div class='todayItem boxborder'>
+					<div class="provice_top">
+						<div class="provice_title">
+							<div id="scrollTitle">
+								<div>个险期交</div>
+								<div>团险期交</div>
+							</div>
+						</div>
+						<div class="provice_mid">
+							<h3 id="geAll">0</h3>
+							<h3 id="tuanAll">0</h3>
+							<h3 id="yinAll">0</h3>
+							<ul id="period">
+								<li>
+									<p class="block"><b class="threeC"></b>3年期</p>
+									<p>0</p>
+								</li>
+								<li>
+									<p class="block"><b class="fiveC"></b>5-9年期</p>
+									<p>0</p>
+								</li>
+								<li>
+									<p class="block"><b class="tenC"></b>10年期及以上</p>
+									<p>0</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="provice_bottom">
+						<div id="pro"></div>
+						<div id="map"></div>
+					</div>
+				</div>
 
-            </div>
-            <div class="list">
-                <div class='boxtitle righttitle'>
-                    <p class="boxtitle_cn">排行榜</p>
-                    <p class="boxtitle_en">Ranking List</p>
-                </div>
-                <div class='todayItem boxborder'>
-                <div class="ranking"  style="display: none">
-                    <ul>
-<!--
+			</div>
+			<div class="list">
+				<div class='boxtitle righttitle' id="checkList">
+					<p class="boxtitle_cn">排行榜</p>
+					<p class="boxtitle_en">Ranking List</p>
+				</div>
+				<div class='todayItem boxborder'>
+					<div id="selectList">
+						<div>
+							<h3 class="selectTitle">模式</h3>
+							<ul class="selectli" id="module">
+								<li name="I">录单</li>
+								<li name="R">实收</li>
+							</ul>
+						</div>
+						<div>
+							<h3 class="selectTitle">机构</h3>
+							<ul class="selectli" id="citySelect">
+								<li value='610000'>陕西</li>
+								<li value="610100">西安</li>
+								<li value="610400">咸阳</li>
+								<li value="612200">商洛</li>
+								<li value="612300">榆林</li>
+								<li value="610500">渭南</li>
+								<li value="612100">安康</li>
+								<li value="610300">宝鸡</li>
+								<li value="610600">汉中</li>
+								<li value="610700">延安</li>
+								<li value="610200">铜川</li>
+							</ul>
+						</div>
+						<p>
+							<button id="agreecity">确定</button>
+							<button id="closecity">关闭</button>
+						</p>
+					</div>
+					<div class="ranking" style="display: none">
+						<ul>
+							<!--
                         <li>
                         	<img src="images/icon1.png" alt="">
                             <span>个人累计</span>
                         </li>
 -->
-                        <li>
-                         <img src="images/icon2.png" alt="">
-                            <span>大单排行</span>
-                        </li>
-                 <!--        <li>
+							<li>
+								<img src="images/icon2.png" alt="">
+								<span>大单排行</span>
+							</li>
+							<!--        <li>
                            <img src="img/icon3.png" alt="">
                             <span>期交精英</span>
                         </li>
@@ -123,11 +152,11 @@
                           <img src="img/icon4.png" alt="">
                             <span>期交县支</span>
                         </li> -->
-                    </ul>
-                </div>
-                <div class='maxbox'>
-                    <div class='rankingBox'>
-<!--
+						</ul>
+					</div>
+					<div class='maxbox'>
+						<div class='rankingBox'>
+							<!--
                         <div class="rankinglist">
                             <div class="bigtable">个人累计TOP10</div>
                             <ul class="animateten onepeoson">
@@ -135,13 +164,13 @@
                             </ul>
                         </div>
 -->
-                        <div class="rankinglist">
-                            <div class="bigtable">今日大单排行TOP10</div>
-                            <ul class="animateten bigscore">
-                               
-                            </ul>
-                        </div>
-<!--
+							<div class="rankinglist">
+								<div class="bigtable">今日大单排行TOP10</div>
+								<ul class="animateten bigscore">
+
+								</ul>
+							</div>
+							<!--
                         <div class="rankinglist">
                             <div class="bigtable">大单排行TOP10</div>
                             <ul class="animateten nulldata">
@@ -155,36 +184,36 @@
                             </ul>
                         </div>
 -->
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="bottomarea">
-            <div class="linepic fl">
-                <div class='boxtitle wanyuan'>
-                    <p class="boxtitle_cn">保费平台</p>
-                    <p class="boxtitle_en">Premium Platform</p>
-                </div>
-                <div class="today_baofei boxborder">
-                    <div id="baofei"></div>
-                </div>
-            </div>
-            <div class="inter fr">
-                <div class='boxtitle righttitle'>
-                    <p class="boxtitle_cn">互动交流</p>
-                    <p class="boxtitle_en">Interaction</p>
-                </div>
-                <div class="today_say boxborder">
-						<div class="wait">
-                        三秦个险十路大军，全线冲锋旗开得胜！期待陕国寿2018捷报频传，开门大红！</div>
-					 <div class="erweima fr">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottomarea">
+			<div class="linepic fl">
+				<div class='boxtitle wanyuan'>
+					<p class="boxtitle_cn">保费平台</p>
+					<p class="boxtitle_en">Premium Platform</p>
+				</div>
+				<div class="today_baofei boxborder">
+					<div id="baofei"></div>
+				</div>
+			</div>
+			<div class="inter fr">
+				<div class='boxtitle righttitle'>
+					<p class="boxtitle_cn">互动交流</p>
+					<p class="boxtitle_en">Interaction</p>
+				</div>
+				<div class="today_say boxborder">
+					<div class="wait">
+						三秦个险十路大军，全线冲锋旗开得胜！期待陕国寿2018捷报频传，开门大红！</div>
+					<div class="erweima fr">
 						<div id="qrcode"></div>
 						<div>该功能仅在大屏上可用</div>
 					</div>
-                </div>
-            </div>
-<!--
+				</div>
+			</div>
+			<!--
             <div class="express fr">
                 <div class='boxtitle righttitle'>
                     <p class="boxtitle_cn">大单快报</p>
@@ -195,684 +224,763 @@
                 </div>
             </div>
 -->
-        </div>
-        <!--        弹出层-->
-        <div class="layout">
-            <div id='close'></div>
-            <div class="layers">
-                <div class="timer">
-                    <div class='timer_top'>
-                        <div class="hour">
-                            <span>1</span>
-                            <span>1</span>
-                        </div>
-                        <div class="maohao">
-                            <img src="images/mao.png" alt="">
-                        </div>
-                        <div class="minute">
-                            <span>1</span>
-                            <span>1</span>
-                        </div>
-                        <div class="maohao">
-                            <img src="images/mao.png" alt="">
-                        </div>
-                        <div class="second">
-                            <span>1</span>
-                            <span>1</span>
-                        </div>
-                    </div>
-                    <div class='timer_middle'>
-                        <div class="year">
-                            <img src="images/x2.png" alt="">
-                            <img src="images/x0.png" alt="">
-                            <img src="images/x1.png" alt="">
-                            <img src="images/x7.png" alt="">
-                        </div>
-                        <div class="wordYear">
-                            <img src="images/year.png" alt="">
-                        </div>
-                        <div class="month">
-                            <img src="images/x1.png" alt="">
-                            <img src="images/x1.png" alt="">
-                        </div>
-                        <div class="wordMonth">
-                            <img src="images/month.png" alt="">
-                        </div>
-                        <div class="day">
-                            <img src="images/x1.png" alt="">
-                            <img src="images/x4.png" alt="">
-                        </div>
-                        <div class="wordDay">
-                            <img src="images/day.png" alt="">
-                        </div>
-                    </div>
-                    <div class='timer_bottom'>
-                        <img src="images/txt1.png" alt=""></div>
-                </div>
-                <div class="splitline"></div>
-                <div class="bigNumber">
-                    <div class="one1"><img src="images/txt.png" alt=""></div>
-                    <div class="thousand">
-                        <img src="images/m2.png" alt="" class="yi">
-                        <img src="images/yi.png" alt="" class="_txt">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="openmask" style="display: none">
-        <ul>
-            <li>
-                <span class="openYMD">2828年11月20日</span>
-                <span class="openHMS">122430</span>
-                <span class="openmoney">9亿</span>
-            </li>
-            <li>
-                <span class="opentime">2016年09月01日</span>
-                <span class="openHMS">122430</span>
-                <span class="openmoney">9亿</span>
-            </li>
-        </ul>
-    </div>
-    <script src='./js/pro.js'></script>
-    <script src='./js/map.js'></script>
-    <script src='./js/pic.js'></script>
-    <script src='./js/pic2.js'></script>
-    <script src='./js/baofei.js'></script>
-    <script>
-        $(function() {
-            var timerP = 30;//timerP代表个险的时间
-            var timerB = 10;//timerB代表银保的时间
-            /*注意时间只能取5的倍数 这是为了优化浏览器*/
-            (function(){
-                function fn() {
-                var width = window.screen.width;
-                var height = window.screen.height;
-                var x = width / 1920;
-                var container = $('.container')[0];
-                container.style.transform = 'scale(' + x + ')';
-                document.body.style.backgroundSize = width + 'px ' + (height+100) + 'px';
-                }
-                fn();
-                window.onresize = function() {
-                    fn()
-                }//初始页面
-            })()
-            function ranking(index){
-                var ranking = $('.ranking ul li');
-                for(var i = 0 ;i<ranking.length;i++){
-                    var x = $(ranking[i]).find('img');
-                    x.attr('src','images/icon-'+(1+i)+'.png');
-                    ranking[i].style.backgroundImage = 'url(images/blue2.png)';
-                    ranking[i].style.color = '#43BDEB'
-                }
-                var a = $(ranking[index]).find('img');
-                a.attr('src','images/icon'+(index+1)+'.png');
-                ranking[index].style.backgroundImage = 'url(images/blue1.png)';
-                ranking[index].style.color = '#fff'
-            }
-            function top10(index,flag){
-                if(flag == true) {
-                        $('.rankingBox').css({left:0});
-                    }
-                $('.rankingBox').animate({left:-440*(index+1) +'px'},1000,function(){
-                    
-                });
-            }
-            $('#openmask').on('click', function() {
-                $('.layout').css('display', 'block');
-                //                changeTime()
-            })
-            $('#close').on('click', function() {
-                $('.layout').css('display', 'none');
-            })
-            $('#openmask ul li').on('click', function() {
-                var _this = $(this);
-                var span = $(this).find('span');
-                var txt0 = span[0].innerHTML;
-                var txt1 = span[1].innerHTML;
-                var txt2 = span[2].innerHTML;
-                txt0 = txt0.replace(/\D/g, '')
-                txt1 = txt1.replace(/\D/g, '')
-                changeYMD(txt0);
-                changeHMS(txt1);
-            })
+		</div>
+		<!--        弹出层-->
+		<div class="layout">
+			<div id='close'></div>
+			<div class="layers">
+				<div class="timer">
+					<div class='timer_top'>
+						<div class="hour">
+							<span>1</span>
+							<span>1</span>
+						</div>
+						<div class="maohao">
+							<img src="images/mao.png" alt="">
+						</div>
+						<div class="minute">
+							<span>1</span>
+							<span>1</span>
+						</div>
+						<div class="maohao">
+							<img src="images/mao.png" alt="">
+						</div>
+						<div class="second">
+							<span>1</span>
+							<span>1</span>
+						</div>
+					</div>
+					<div class='timer_middle'>
+						<div class="year">
+							<img src="images/x2.png" alt="">
+							<img src="images/x0.png" alt="">
+							<img src="images/x1.png" alt="">
+							<img src="images/x7.png" alt="">
+						</div>
+						<div class="wordYear">
+							<img src="images/year.png" alt="">
+						</div>
+						<div class="month">
+							<img src="images/x1.png" alt="">
+							<img src="images/x1.png" alt="">
+						</div>
+						<div class="wordMonth">
+							<img src="images/month.png" alt="">
+						</div>
+						<div class="day">
+							<img src="images/x1.png" alt="">
+							<img src="images/x4.png" alt="">
+						</div>
+						<div class="wordDay">
+							<img src="images/day.png" alt="">
+						</div>
+					</div>
+					<div class='timer_bottom'>
+						<img src="images/txt1.png" alt=""></div>
+				</div>
+				<div class="splitline"></div>
+				<div class="bigNumber">
+					<div class="one1"><img src="images/txt.png" alt=""></div>
+					<div class="thousand">
+						<img src="images/m2.png" alt="" class="yi">
+						<img src="images/yi.png" alt="" class="_txt">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="openmask" style="display: none">
+		<ul>
+			<li>
+				<span class="openYMD">2828年11月20日</span>
+				<span class="openHMS">122430</span>
+				<span class="openmoney">9亿</span>
+			</li>
+			<li>
+				<span class="opentime">2016年09月01日</span>
+				<span class="openHMS">122430</span>
+				<span class="openmoney">9亿</span>
+			</li>
+		</ul>
+	</div>
+	<script src='./js/pro.js'></script>
+	<script src='./js/map.js'></script>
+	<script src='./js/pic.js'></script>
+	<script src='./js/pic2.js'></script>
+	<script src='./js/baofei.js'></script>
+	<script>
+		$(function() {
+			var timerP = 30; //timerP代表个险的时间
+			var timerB = 10; //timerB代表银保的时间
+			/*注意时间只能取5的倍数 这是为了优化浏览器*/
+			(function(window) {
+				function fn() {
+					var width = window.screen.width;
+					var height = window.screen.height;
+					var x = width / 1920;
+					var container = $('.container')[0];
+					container.style.transform = 'scale(' + x + ')';
+					document.body.style.backgroundSize = width + 'px ' + (height + 100) + 'px';
+				}
+				fn();
+				window.onresize = function() {
+					fn()
+				} //初始页面
+			})(window)
+			function geturlParam(){
+				var url = window.location.search;
+				console.log(1)
+				if(url === ''){
+					$('#citySelect li[value="610000"]').addClass('current');
+					$('#module li[name="I"]').addClass('current');
+					return {
+						"cal_type":"I",
+						"branch":"612100"
+					}
+				}else {
+					var obj = splitUrl(url.slice(1));
+					var branch = obj.branch || '610000';
+					var cal_type = obj.cal_type || 'I';
+					$('#citySelect li[value="'+branch+'"]').addClass('current');
+					$('#module li[name="'+cal_type+'"]').addClass('current');
+					return obj
+				}
+			}
+			function ranking(index) {
+				var ranking = $('.ranking ul li');
+				for (var i = 0; i < ranking.length; i++) {
+					var x = $(ranking[i]).find('img');
+					x.attr('src', 'images/icon-' + (1 + i) + '.png');
+					ranking[i].style.backgroundImage = 'url(images/blue2.png)';
+					ranking[i].style.color = '#43BDEB'
+				}
+				var a = $(ranking[index]).find('img');
+				a.attr('src', 'images/icon' + (index + 1) + '.png');
+				ranking[index].style.backgroundImage = 'url(images/blue1.png)';
+				ranking[index].style.color = '#fff'
+			}
+			function top10(index, flag) {
+				if (flag == true) {
+					$('.rankingBox').css({
+						left: 0
+					});
+				}
+				$('.rankingBox').animate({
+					left: -440 * (index + 1) + 'px'
+				}, 1000, function() {
+
+				});
+			}
+			$('#openmask').on('click', function() {
+				$('.layout').css('display', 'block');
+				//                changeTime()
+			})
+		
+			$('#close').on('click', function() {
+				$('.layout').css('display', 'none');
+			})
+			$('#openmask ul li').on('click', function() {
+				var _this = $(this);
+				var span = $(this).find('span');
+				var txt0 = span[0].innerHTML;
+				var txt1 = span[1].innerHTML;
+				var txt2 = span[2].innerHTML;
+				txt0 = txt0.replace(/\D/g, '')
+				txt1 = txt1.replace(/\D/g, '')
+				changeYMD(txt0);
+				changeHMS(txt1);
+			})
+			/*控制切换*/
+			$('#checkList').on('click',function(){
+				$('#selectList').slideToggle(400)
+			})
+			$('#module li').on('click',function(){
+				$('#module li').removeClass('current');
+				$(this).addClass('current')
+			})
+			$('#citySelect li').on('click',function(){
+				$('#citySelect li').removeClass('current');
+				$(this).addClass('current')
+			})
+			$('#closecity').on('click',function(){
+				$('#selectList').slideToggle(400)
+			})
+			$('#agreecity').on('click',function(){
+				var cal_type = $('#module li.current').attr('name');
+				var branch = $('#citySelect li.current').attr('value');
+				var url = window.location.search;
+				var pathName = window.location.pathname;
+				if(url === ''){
+					var str = '?cal_type='+cal_type + '&branch=' + branch; 
+					window.location.href = pathName + str;
+				}else {
+					var nextStr = url.slice(1);
+					nextStr = splitUrl(nextStr)
+					nextStr.cal_type = cal_type;
+					nextStr.branch = branch;
+					var urlArr = [];
+					for(var k in nextStr){
+						urlArr.push(k+'='+nextStr[k])
+					}
+					window.location.href = pathName + '?' + urlArr.join('&');
+				}
+			})
 			var qrcode = new QRCode(document.getElementById("qrcode"), {
-                           width: 150,
-                           height: 150
-                       });
-		   qrcode.makeCode('该二维码仅在大屏开启时可用');
-            function changeYMD(str) {
-                $($('.year img')[0]).attr('src', 'images/x' + str[0] + '.png');
-                $($('.year img')[1]).attr('src', 'images/x' + str[1] + '.png');
-                $($('.year img')[2]).attr('src', 'images/x' + str[2] + '.png');
-                $($('.year img')[3]).attr('src', 'images/x' + str[3] + '.png');
-                $($('.month img')[0]).attr('src', 'images/x' + str[4] + '.png');
-                $($('.month img')[1]).attr('src', 'images/x' + str[5] + '.png');
-                $($('.day img')[0]).attr('src', 'images/x' + str[6] + '.png');
-                $($('.day img')[1]).attr('src', 'images/x' + str[7] + '.png');
-            }
-            function changeHMS(str) {
-                $($('.hour span')[0]).html(str[0]);
-                $($('.hour span')[1]).html(str[1]);
-                $($('.minute span')[0]).html(str[2]);
-                $($('.minute span')[1]).html(str[3]);
-                $($('.second span')[0]).html(str[4]);
-                $($('.second span')[1]).html(str[5]);
-            }
+				width: 150,
+				height: 150
+			});
+			qrcode.makeCode('该二维码仅在大屏开启时可用');
+			function splitUrl(str){
+				if(!str){
+					return 
+				}
+				var s = str.split('&');
+				var obj = {}
+				for(var i =0;i<s.length;i++){
+					obj[s[i].split('=')[0]] = s[i].split('=')[1]
+				}
+				return obj
+			}
 
-            function changeTime() {
-                var nowtime = new Date();
-                var year = nowtime.getFullYear();
-                var day = nowtime.getDate();
-                var month = nowtime.getMonth() + 1;
-                var minutes = nowtime.getMinutes();
-                var hour = nowtime.getHours();
-                var seconds = nowtime.getSeconds();
-                year = year < 10 ? '0' + year : year + '';
-                month = month < 10 ? '0' + month : month + '';
-                day = day < 10 ? '0' + day : day + '';
-                hour = hour < 10 ? '0' + hour : hour + '';
-                minutes = minutes < 10 ? '0' + minutes : minutes + '';
-                seconds = seconds < 10 ? '0' + seconds : seconds + '';
-                nowtime = null;
-            }
-            function swiperTxt(number) {
-                clearInterval(t);
-                var x = 0;
-                var t = setInterval(function() {
-                    x++;
-                    $('.swiperbox').animate({
-                        left: -405 * x + 'px'
-                    }, 1000, function() {
-                        if (x == number) {
-                            x = 0;
-                            $('.swiperbox').css('left', 0);
-                        }
-                    });
-                }, 4000)
-            }
+			function changeYMD(str) {
+				$($('.year img')[0]).attr('src', 'images/x' + str[0] + '.png');
+				$($('.year img')[1]).attr('src', 'images/x' + str[1] + '.png');
+				$($('.year img')[2]).attr('src', 'images/x' + str[2] + '.png');
+				$($('.year img')[3]).attr('src', 'images/x' + str[3] + '.png');
+				$($('.month img')[0]).attr('src', 'images/x' + str[4] + '.png');
+				$($('.month img')[1]).attr('src', 'images/x' + str[5] + '.png');
+				$($('.day img')[0]).attr('src', 'images/x' + str[6] + '.png');
+				$($('.day img')[1]).attr('src', 'images/x' + str[7] + '.png');
+			}
 
-            function threenum(num) {
-                var num = num / 10000;
-                num = num.toFixed(1);
-                return num;
-            }
+			function changeHMS(str) {
+				$($('.hour span')[0]).html(str[0]);
+				$($('.hour span')[1]).html(str[1]);
+				$($('.minute span')[0]).html(str[2]);
+				$($('.minute span')[1]).html(str[3]);
+				$($('.second span')[0]).html(str[4]);
+				$($('.second span')[1]).html(str[5]);
+			}
 
-            function addmessage(str) {
-                if (str === '') {
-                    return
-                }
-                var box = $('#messageitem');
-                var li = document.createElement('li');
-                li.innerText = str;
-                box.prepend(li);
-            }
+			function changeTime() {
+				var nowtime = new Date();
+				var year = nowtime.getFullYear();
+				var day = nowtime.getDate();
+				var month = nowtime.getMonth() + 1;
+				var minutes = nowtime.getMinutes();
+				var hour = nowtime.getHours();
+				var seconds = nowtime.getSeconds();
+				year = year < 10 ? '0' + year : year + '';
+				month = month < 10 ? '0' + month : month + '';
+				day = day < 10 ? '0' + day : day + '';
+				hour = hour < 10 ? '0' + hour : hour + '';
+				minutes = minutes < 10 ? '0' + minutes : minutes + '';
+				seconds = seconds < 10 ? '0' + seconds : seconds + '';
+				nowtime = null;
+			}
 
-            function animatetable(str) {
-                var p = $('#bigtable').find('p');
-                $(p[1]).html('个险' + str + '大单TOP10');
-                $('#bigtable').animate({
-                    'top': -50
-                }, 600, function() {
-                    $('#bigtable').css('top', 0)
-                    $(p[0]).html('个险' + str + '大单TOP10');
-                });
-            }
-            function animateten(allList) {
-                var newArr3 = [];
-                var newArr7 = [];
-                newArr3 = allList.slice(0,3)
-                newArr7 = allList.slice(3,10);
-                function readthree(arrlist) {
-                    var emptyArr = [];
-                    for (var i = 0; i < arrlist.length; i++) {
-                        var a = arrlist[i].salesBranchCode;
-                        var val = branchCode[a];
-                        var x = Math.round(arrlist[i].prem / 10000) + '万'
-                        emptyArr.push('<li>' +
-                            '<span class="score' + (i + 1) + '">' + (i + 1) + '</span>' +
-                            '<span>' + val + '</span>' +
-                            //                            '<span>收一</span>' +
-                            '<span>' + arrlist[i].salesName + '</span>' +
-                            '<span>' + x + '</span>' +
-                            '</li>')
-                    }
-                   return emptyArr.join('');
-                } //渲染前三名
-                function readnine(arrlist, number) {
-                    var emptyArr = [];
-                    for (var i = 0; i < arrlist.length; i++) {
-                        var a = arrlist[i].salesBranchCode;
-                        var val = branchCode[a];
-                        var x = Math.round(arrlist[i].prem / 10000) + '万'
-                        emptyArr.push('<li>' +
-                            '<span>' + (number + i + 1) + '</span>' +
-                            '<span>' + val + '</span>' +
-                            //                            '<span>收一</span>' +
-                            '<span>' + arrlist[i].salesName + '</span>' +
-                            '<span>' + x + '</span>' +
-                            '</li>')
-                    }
-                    return emptyArr.join('')
-                } //渲染9个人
-                return readthree(newArr3) + readnine(newArr7,3);
-            }
+			function swiperTxt(number) {
+				clearInterval(t);
+				var x = 0;
+				var t = setInterval(function() {
+					x++;
+					$('.swiperbox').animate({
+						left: -405 * x + 'px'
+					}, 1000, function() {
+						if (x == number) {
+							x = 0;
+							$('.swiperbox').css('left', 0);
+						}
+					});
+				}, 4000)
+			}
 
-            function animatetitle(str, obj) {
-                if (str == '个险') {
-                    var periodstr1 = '<li>' +
-                        '<p class="block"><b class="threeC"></b>3年期</p>' +
-                        '<p>' + obj.period3 + '</p>' +
-                        '</li>' +
-                        '<li>' +
-                        '<p class="block"><b class="fiveC"></b>5-9年期</p>' +
-                        '<p>' + obj.period5 + '</p>' +
-                        '</li>' +
-                        '<li>' +
-                        '<p class="block"><b class="tenC"></b>10年期及以上</p>' +
-                        '<p>' + obj.period10 + '</p>' +
-                        '</li>';
-                    $('#period').html(periodstr1);
-                    $('#geAll').html(obj.periodAll);
-                    $('#geAll').css('display', 'block');
-                    $('#yinAll').css('display', 'none');
-                    $('#tuanAll').css('display', 'none');
-                }
-                if (str == '银保') {
-                    var periodstr2 = '<li>' +
-                        '<p class="block"><b class="tenC"></b>期交</p>' +
-                        '<p>' + obj.qijiao + '</p>' +
-                        '</li>';
-                    $('#period').html(periodstr2);
-                    $('#yinAll').html(obj.periodAll);
-                    $('#geAll').css('display', 'none');
-                    $('#tuanAll').css('display', 'none');
-                    $('#yinAll').css('display', 'block');
-                }
-                if (str == '团险') {
-                    var periodstr3 = '<li></li>w'
-                    $('#period').html(periodstr3);
-                    $('#tuanAll').html(obj.periodAll);
-                    $('#yinAll').css('display', 'none');
-                    $('#geAll').css('display', 'none');
-                    $('#tuanAll').css('display', 'block');
-                }
-//                var strtitle = str[0] + '' + str[1];
-//                var titles = $('#scrollTitle').find('div');
-//                $(titles[1]).html(strtitle + '期交');
-//                $('#scrollTitle').animate({
-//                    'top': -29
-//                }, 500, function() {
-//                    $(titles[0]).html(strtitle + '期交');
-//                    $('#scrollTitle').css('top', 0);
-//                });
-            } //[保费，团险，人险]
-            function animatetxt(arr) {
-                var titles = $('#scrollContent').find('div');
-                var p1 = $(titles[0]).find('p')[0];
-                var p2 = $(titles[0]).find('p')[1];
-                var p3 = $(titles[1]).find('p')[0];
-                var p4 = $(titles[1]).find('p')[1];
-                $(p3).html(arr[0]);
-                $(p4).html(arr[1]);
-                $('#scrollContent').animate({
-                    'top': -60
-                }, 1000, function() {
-                    $('#scrollContent').css('top', 0);
-                    $(p1).html(arr[0]);
-                    $(p2).html(arr[1]);
-                });
-            } //开门红大单快报
-            function animatename(str) {
-                var str = '开门红' + str;
-                var titles = $('#animateTop div');
-                $(titles[1]).html(str);
-                $('#animateTop').animate({
-                    'top': -69
-                }, 500, function() {
-                    $(titles[0]).html(str);
-                    $('#animateTop').css('top', 0);
-                });
-            }
+			function threenum(num) {
+				var num = num / 10000;
+				num = num.toFixed(1);
+				return num;
+			}
 
-            function scroll(number, num) {
-                var number = Math.round(number);
-                number = number + '';
-                if (number.length < 10) {
-                    var s = 10 - number.length;
-                    var a = '';
-                    for (var k = 0; k < s; k++) {
-                        a += '0'
-                    }
-                    number = a + number;
-                }
-                var numlist = $('.scrollnumber li img');
-                var arr = [];
-                for (var i = 0; i < 10; i++) {
-                    var x = numlist[i].src.split('number')[1][0]
-                    changeImg(x, number[i], i);
-                }
+			function addmessage(str) {
+				if (str === '') {
+					return
+				}
+				var box = $('#messageitem');
+				var li = document.createElement('li');
+				li.innerText = str;
+				box.prepend(li);
+			}
+			function animatetable(str) {
+				var p = $('#bigtable').find('p');
+				$(p[1]).html('个险' + str + '大单TOP10');
+				$('#bigtable').animate({
+					'top': -50
+				}, 600, function() {
+					$('#bigtable').css('top', 0)
+					$(p[0]).html('个险' + str + '大单TOP10');
+				});
+			}
 
-                function changeImg(i, x, number) {
-                    var a = i;
-                    var timer = setInterval(function() {
-                        if (i < x) {
-                            a++;
-                        }
-                        if (i > x) {
-                            a--;
-                        }
-                        numlist[number].src = "images/number" + a + ".png";
-                        if (a == x) {
-                            clearInterval(timer)
-                        }
-                    }, 100)
-                }
-            } //换图片和进度条
-            function change_title(selector, number) {
-                var a = $('#' + selector).text() - 0;
-                if(a == number){
-                    return 
-                }
-                if( number==0){
-                    return 
-                }
-                var demo = new CountUp(selector, a, number, 1, 2.5);
-                demo.start();
-                demo = null;
-                //                var timer = setInterval(function() {
-                //                    a += 1;
-                //                    if (a >= number) {
-                //                        clearInterval(timer);
-                //                        a = number;
-                //                    };
-                //                    $('#' + selector).html(a)
-                //                }, 20)
-            }//数字涨起来
+			function animateten(allList) {
+				var newArr3 = [];
+				var newArr7 = [];
+				newArr3 = allList.slice(0, 3)
+				newArr7 = allList.slice(3, 10);
 
-            function sortArr(arr, property) {
-                var newArr = [];
-                for (var i = 0; i < arr.length; i++) {
-                    newArr[i] = arr[i]
-                }
+				function readthree(arrlist) {
+					var emptyArr = [];
+					for (var i = 0; i < arrlist.length; i++) {
+						var a = arrlist[i].salesBranchCode;
+						var val = branchCode[a];
+						var x = Math.round(arrlist[i].prem / 10000) + '万'
+						emptyArr.push('<li>' +
+							'<span class="score' + (i + 1) + '">' + (i + 1) + '</span>' +
+							'<span>' + val + '</span>' +
+							//                            '<span>收一</span>' +
+							'<span>' + arrlist[i].salesName + '</span>' +
+							'<span>' + x + '</span>' +
+							'</li>')
+					}
+					return emptyArr.join('');
+				} //渲染前三名
+				function readnine(arrlist, number) {
+					var emptyArr = [];
+					for (var i = 0; i < arrlist.length; i++) {
+						var a = arrlist[i].salesBranchCode;
+						var val = branchCode[a];
+						var x = Math.round(arrlist[i].prem / 10000) + '万'
+						emptyArr.push('<li>' +
+							'<span>' + (number + i + 1) + '</span>' +
+							'<span>' + val + '</span>' +
+							//                            '<span>收一</span>' +
+							'<span>' + arrlist[i].salesName + '</span>' +
+							'<span>' + x + '</span>' +
+							'</li>')
+					}
+					return emptyArr.join('')
+				} //渲染9个人
+				return readthree(newArr3) + readnine(newArr7, 3);
+			}
 
-                function compare(property) {
-                    return function(a, b) {
-                        var value1 = a[property];
-                        var value2 = b[property];
-                        return value2 - value1;
-                    }
-                }
-                return newArr.sort(compare(property))
-            }
-            //按照对象的字段排序
-            function isgit(number) {
-                var number = number / 1000;
-                number = Math.floor(number);
-                if (number >= isgitnumber) {
-                    isgitnumber = number + 1;
-                    flag = false;
-                    $('.layout').css('display', 'block');
-                    setTimeout(function() {
-                        $('.layout').css('display', 'none');
-                    }, 8000)
-                }
-            }
-            function progress(){
+			function animatetitle(str, obj) {
+				if (str == '个险') {
+					var periodstr1 = '<li>' +
+						'<p class="block"><b class="threeC"></b>3年期</p>' +
+						'<p>' + obj.period3 + '</p>' +
+						'</li>' +
+						'<li>' +
+						'<p class="block"><b class="fiveC"></b>5-9年期</p>' +
+						'<p>' + obj.period5 + '</p>' +
+						'</li>' +
+						'<li>' +
+						'<p class="block"><b class="tenC"></b>10年期及以上</p>' +
+						'<p>' + obj.period10 + '</p>' +
+						'</li>';
+					$('#period').html(periodstr1);
+					$('#geAll').html(obj.periodAll);
+					$('#geAll').css('display', 'block');
+					$('#yinAll').css('display', 'none');
+					$('#tuanAll').css('display', 'none');
+				}
+				if (str == '银保') {
+					var periodstr2 = '<li>' +
+						'<p class="block"><b class="tenC"></b>期交</p>' +
+						'<p>' + obj.qijiao + '</p>' +
+						'</li>';
+					$('#period').html(periodstr2);
+					$('#yinAll').html(obj.periodAll);
+					$('#geAll').css('display', 'none');
+					$('#tuanAll').css('display', 'none');
+					$('#yinAll').css('display', 'block');
+				}
+				if (str == '团险') {
+					var periodstr3 = '<li></li>w'
+					$('#period').html(periodstr3);
+					$('#tuanAll').html(obj.periodAll);
+					$('#yinAll').css('display', 'none');
+					$('#geAll').css('display', 'none');
+					$('#tuanAll').css('display', 'block');
+				}
+				//                var strtitle = str[0] + '' + str[1];
+				//                var titles = $('#scrollTitle').find('div');
+				//                $(titles[1]).html(strtitle + '期交');
+				//                $('#scrollTitle').animate({
+				//                    'top': -29
+				//                }, 500, function() {
+				//                    $(titles[0]).html(strtitle + '期交');
+				//                    $('#scrollTitle').css('top', 0);
+				//                });
+			} //[保费，团险，人险]
+			function animatetxt(arr) {
+				var titles = $('#scrollContent').find('div');
+				var p1 = $(titles[0]).find('p')[0];
+				var p2 = $(titles[0]).find('p')[1];
+				var p3 = $(titles[1]).find('p')[0];
+				var p4 = $(titles[1]).find('p')[1];
+				$(p3).html(arr[0]);
+				$(p4).html(arr[1]);
+				$('#scrollContent').animate({
+					'top': -60
+				}, 1000, function() {
+					$('#scrollContent').css('top', 0);
+					$(p1).html(arr[0]);
+					$(p2).html(arr[1]);
+				});
+			} //开门红大单快报
+			function animatename(str) {
+				var str = '开门红' + str;
+				var titles = $('#animateTop div');
+				$(titles[1]).html(str);
+				$('#animateTop').animate({
+					'top': -69
+				}, 500, function() {
+					$(titles[0]).html(str);
+					$('#animateTop').css('top', 0);
+				});
+			}
 
-            }
-            ranking(0)
-            var isgitnumber = 1;
-            var tuanObj = {};
-            var geObj = {};
-            var yinObj = {};
-            var tuanArr = [];
-            var geArr = [];
-            var yinArr = [];
-            var picdata0 = [];
-            var picdata1 = [];
-            var picdata2 = [];
-            var arrTitle = [];
-            var kaimenData = [];
-            var baofeiData = [];
+			function scroll(number, num) {
+				var number = Math.round(number);
+				number = number + '';
+				if (number.length < 10) {
+					var s = 10 - number.length;
+					var a = '';
+					for (var k = 0; k < s; k++) {
+						a += '0'
+					}
+					number = a + number;
+				}
+				var numlist = $('.scrollnumber li img');
+				var arr = [];
+				for (var i = 0; i < 10; i++) {
+					var x = numlist[i].src.split('number')[1][0]
+					changeImg(x, number[i], i);
+				}
+
+				function changeImg(i, x, number) {
+					var a = i;
+					var timer = setInterval(function() {
+						if (i < x) {
+							a++;
+						}
+						if (i > x) {
+							a--;
+						}
+						numlist[number].src = "images/number" + a + ".png";
+						if (a == x) {
+							clearInterval(timer)
+						}
+					}, 100)
+				}
+			} //换图片和进度条
+			function change_title(selector, number) {
+				var a = $('#' + selector).text() - 0;
+				if (a == number) {
+					return
+				}
+				if (number == 0) {
+					return
+				}
+				var demo = new CountUp(selector, a, number, 1, 2.5);
+				demo.start();
+				demo = null;
+				//                var timer = setInterval(function() {
+				//                    a += 1;
+				//                    if (a >= number) {
+				//                        clearInterval(timer);
+				//                        a = number;
+				//                    };
+				//                    $('#' + selector).html(a)
+				//                }, 20)
+			} //数字涨起来
+
+			function sortArr(arr, property) {
+				var newArr = [];
+				for (var i = 0; i < arr.length; i++) {
+					newArr[i] = arr[i]
+				}
+
+				function compare(property) {
+					return function(a, b) {
+						var value1 = a[property];
+						var value2 = b[property];
+						return value2 - value1;
+					}
+				}
+				return newArr.sort(compare(property))
+			}
+			//按照对象的字段排序
+			function isgit(number) {
+				var number = number / 1000;
+				number = Math.floor(number);
+				if (number >= isgitnumber) {
+					isgitnumber = number + 1;
+					flag = false;
+					$('.layout').css('display', 'block');
+					setTimeout(function() {
+						$('.layout').css('display', 'none');
+					}, 8000)
+				}
+			}
+			
+			function progress() {
+
+			}
+			ranking(0)
+			var isgitnumber = 1;
+			var tuanObj = {};
+			var geObj = {};
+			var yinObj = {};
+			var tuanArr = [];
+			var geArr = [];
+			var yinArr = [];
+			var picdata0 = [];
+			var picdata1 = [];
+			var picdata2 = [];
+			var arrTitle = [];
+			var kaimenData = [];
+			var baofeiData = [];
 			var dataPlan = [];
-            var index = 1;
-            var progressP = '';
-            var progressP10 = '';
-            var mapData = {};
-            var littleData = 0;
-            function getQueryString(){
-                var URL = location.search;
-                if(URL.indexOf('dev=1') !== -1){
-                    return '7001'
-                }else{
-                    return '17001'
-                }
-            }
-            var PORT = getQueryString();
-            var socket = new SockJS('http://10.184.1.22:'+PORT+'/websocket');
-            stompClient = Stomp.over(socket);
-            stompClient.connect({}, function(frame) {
-                var flag = true;
-                var flag1 = false;
-                stompClient.subscribe('/topic/today-prem', function(greeting) {
-                    var data = JSON.parse(greeting.body);
-                    var newArr = data.subsidiary;
-                    if(newArr.length == 0){
-                    	return 
-                    }
-                    mapData = data.subsidiary;
-                    var geSortArr = sortArr(newArr, 'premP')
-                    var yinSortArr = sortArr(newArr, 'premB')
-                    var tuanSortArr = sortArr(newArr, 'premG')
-                    for (var i = 0; i < newArr.length; i++) {
-                        geArr[i] = {};
-                        geArr[i].period3 = threenum(geSortArr[i].premPPeriod3);
-                        geArr[i].period5 = threenum(geSortArr[i].premPPeriod5To9);
-                        geArr[i].period10 = threenum(geSortArr[i].premPPeriod10GE);
-                        geArr[i].branch = geSortArr[i].branch;
+			var index = 1;
+			var progressP = '';
+			var progressP10 = '';
+			var mapData = {};
+			var littleData = 0;
+			var urlParams = geturlParam();
+			var htmlBranch = urlParams.branch;
+			var htmlPrem = urlParams.cal_type === 'I'? 'input' : 'inforce'
+			function getQueryString() {
+				var URL = location.search;
+				if (URL.indexOf('dev=1') !== -1) {
+					return '7001'
+				} else {
+					return '17001'
+				}
+			}
+			var PORT = getQueryString();
+			var socket = new SockJS('http://10.184.1.22:' + PORT + '/websocket');
+			stompClient = Stomp.over(socket);
+			stompClient.connect({}, function(frame) {
+				var flag = true;
+				var flag1 = false;
+				stompClient.subscribe('/topic/today-prem', function(greeting) {
+					var data = JSON.parse(greeting.body);
+					var newArr = data.subsidiary;
+					if (newArr.length == 0) {
+						return
+					}
+					mapData = data.subsidiary;
+					var geSortArr = sortArr(newArr, 'premP')
+					var yinSortArr = sortArr(newArr, 'premB')
+					var tuanSortArr = sortArr(newArr, 'premG')
+					for (var i = 0; i < newArr.length; i++) {
+						geArr[i] = {};
+						geArr[i].period3 = threenum(geSortArr[i].premPPeriod3);
+						geArr[i].period5 = threenum(geSortArr[i].premPPeriod5To9);
+						geArr[i].period10 = threenum(geSortArr[i].premPPeriod10GE);
+						geArr[i].branch = geSortArr[i].branch;
 
-                        yinArr[i] = {};
-                        yinArr[i].period10 = threenum(yinSortArr[i].premB);
-                        yinArr[i].branch = yinSortArr[i].branch;
+						yinArr[i] = {};
+						yinArr[i].period10 = threenum(yinSortArr[i].premB);
+						yinArr[i].branch = yinSortArr[i].branch;
 
-                        tuanArr[i] = {}
-                        tuanArr[i].period10 = threenum(tuanSortArr[i].premG);
-                        tuanArr[i].branch = tuanSortArr[i].branch;
-                    }
+						tuanArr[i] = {}
+						tuanArr[i].period10 = threenum(tuanSortArr[i].premG);
+						tuanArr[i].branch = tuanSortArr[i].branch;
+					}
 
-                    geObj.periodAll = threenum(data.premP);
-                    geObj.period10 = threenum(data.premPPeriod10GE)
-                    geObj.period3 = threenum(data.premPPeriod3)
-                    geObj.period5 = threenum(data.premPPeriod5To9)
+					geObj.periodAll = threenum(data.premP);
+					geObj.period10 = threenum(data.premPPeriod10GE)
+					geObj.period3 = threenum(data.premPPeriod3)
+					geObj.period5 = threenum(data.premPPeriod5To9)
 
-                    yinObj.periodAll = threenum(data.premB);
-                    yinObj.qijiao = threenum(data.premBPeriod)
+					yinObj.periodAll = threenum(data.premB);
+					yinObj.qijiao = threenum(data.premBPeriod)
 
-                    tuanObj.periodAll = threenum(data.premG);
-                    if (yinObj.periodAll) {
-                        change_title('yinAll', yinObj.periodAll);
-                    }
-                    if (tuanObj.periodAll) {
-                        change_title('tuanAll', tuanObj.periodAll);
-                    }
-                    if (geObj.periodAll) {
-                        change_title('geAll', geObj.periodAll);
-                    }
-                    //个险总保费动画
-                    if (flag && flag1) {
-                        init();
-                        flag = false;
-                    }
-					
-                });
-                stompClient.subscribe('/topic/top-today-prem-sales', function(greeting) {
-                    var datalist = JSON.parse(greeting.body);
-                    if (datalist.length === 0) {
-                        return;
-                    }
-                    // animateten(datalist);
+					tuanObj.periodAll = threenum(data.premG);
+					if (yinObj.periodAll) {
+						change_title('yinAll', yinObj.periodAll);
+					}
+					if (tuanObj.periodAll) {
+						change_title('tuanAll', tuanObj.periodAll);
+					}
+					if (geObj.periodAll) {
+						change_title('geAll', geObj.periodAll);
+					}
+					//个险总保费动画
+					if (flag && flag1) {
+						init();
+						flag = false;
+					}
 
-                });
-                stompClient.subscribe('/topic/in-force-prem', function(data) {
-                    var datalist = JSON.parse(data.body);
-                    var newArr = datalist.subsidiary;
-                    if(newArr.length == 0){
-                    	return 
-                    }
-                    if(datalist.premPPeriod > littleData){
-                        littleData = datalist.premPPeriod;
-                    }
-                    if(datalist.premPPeriod < littleData){
-                        return 
-                    }
-                    for (var i = 0; i < newArr.length; i++) {
-                        picdata0[i] = {};
-                        picdata0[i].data = threenum(newArr[i].premP);
-                        picdata0[i].premPPeriod = threenum(newArr[i].premPPeriod);
-                        picdata0[i].premPPeriod10GE = threenum(newArr[i].premPPeriod10GE);
-                        picdata0[i].branch = newArr[i].branch;
+				});
+				stompClient.subscribe('/topic/top-today-prem-sales', function(greeting) {
+					var datalist = JSON.parse(greeting.body);
+					if (datalist.length === 0) {
+						return;
+					}
+					// animateten(datalist);
 
-                        picdata1[i] = {};
-                        picdata1[i].data = threenum(newArr[i].premB);
-                        picdata1[i].branch = newArr[i].branch;
+				});
+				stompClient.subscribe('/topic/in-force-prem', function(data) {
+					var datalist = JSON.parse(data.body);
+					var newArr = datalist.subsidiary;
+					if (newArr.length == 0) {
+						return
+					}
+					if (datalist.premPPeriod > littleData) {
+						littleData = datalist.premPPeriod;
+					}
+					if (datalist.premPPeriod < littleData) {
+						return
+					}
+					for (var i = 0; i < newArr.length; i++) {
+						picdata0[i] = {};
+						picdata0[i].data = threenum(newArr[i].premP);
+						picdata0[i].premPPeriod = threenum(newArr[i].premPPeriod);
+						picdata0[i].premPPeriod10GE = threenum(newArr[i].premPPeriod10GE);
+						picdata0[i].branch = newArr[i].branch;
 
-                        picdata2[i] = {};
-                        picdata2[i].data = threenum(newArr[i].premG);
-                        picdata2[i].branch = newArr[i].branch;
-                    }
-                    arrTitle[0] = datalist.premPPeriod;
-                    arrTitle[1] = datalist.premB;
-                    arrTitle[2] = datalist.premG;
-                    arrTitle[3] = datalist.premPPeriod10GE;
-                    console.log( arrTitle[0] )
-                    flag1 = true;
-                })
-                stompClient.subscribe('/topic/daily-prem', function(greeting) {
-                    var datalist = JSON.parse(greeting.body);
-                    if (datalist.length > 0) {
-                        baofeiData = datalist;
-                        baofei(baofeiData)
-                    }
-                });
-//                stompClient.subscribe('/topic/in-force-prem-target', function(greeting) {
-//                    var datalist = JSON.parse(greeting.body);
-//					var  newArr = datalist.subsidiary;
-//                   	if (newArr.length === 0) {
-//                        return;
-//                    }
-//					for(var i =0;i<newArr.length;i++){
-//					 	dataPlan[i] = {};
-//                        dataPlan[i].premPPeriod = newArr[i].premPPeriod;
-//                        dataPlan[i].premPPeriod10 = newArr[i].premPPeriod10;
-//                        dataPlan[i].branch = newArr[i].branch;
-//					}
-//                });
-                stompClient.subscribe('/topic/top-sales-hugecontract',function(data){
-                    var datalist = JSON.parse(data.body);
-                    if (datalist.length === 0) {
-                        return;
-                    }
-                    setTimeout(function(){
-                    	var x = animateten(datalist);
-                    	if(x.indexOf('undefined') !== -1){
-                    		return 
-                    	}
-                        $('.bigscore').html(animateten(datalist));
-                    },3000)
-                })
-                // stompClient.subscribe('/topic/top-sales-yearprem',function(data){
-                //     var datalist = JSON.parse(data.body);
-                //      if (datalist.length === 0) {
-                //         return;
-                //     }
-                //     setTimeout(function(){
-                //         $('.onepeoson').html(animateten(datalist))
-                //     })
-                // })
-                socket.onclose = function() {
-                    if (confirm('服务器断开连接，请重新连接')) {
-                        location.reload();
-                    }
-                };
-            });
-            //             上面的代码是socket
-            function init() {
-                clearInterval(timer2);
-                var c = 0;
-                var d = 0;
-                var num = 0;
-                pro(geArr);
-                pic(picdata0,"期交");
-                map(mapData)
-                if(arrTitle[0] !== 0){
-                	scroll(arrTitle[0], 30);
-                }
-                var lis = $('.tabitem ul li');
-                if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
+						picdata1[i] = {};
+						picdata1[i].data = threenum(newArr[i].premB);
+						picdata1[i].branch = newArr[i].branch;
 
-                }else {
-                    $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
-                }
-                var timer2 = setInterval(function() {
-                    num += 5;
-                    if (num == 5) {
-                        pic(picdata0,"期交");
-                        if(typeof arrTitle[0] !== 'object' ){
-                        	scroll(arrTitle[0], 30);
-                        }
-                        pro(geArr);
-                        animatetitle('个险', geObj)
-                        $(lis).removeClass('current');
-                        $(lis[0]).addClass('current');
-                        top10(-1,true);
-                        if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
+						picdata2[i] = {};
+						picdata2[i].data = threenum(newArr[i].premG);
+						picdata2[i].branch = newArr[i].branch;
+					}
+					arrTitle[0] = datalist.premPPeriod;
+					arrTitle[1] = datalist.premB;
+					arrTitle[2] = datalist.premG;
+					arrTitle[3] = datalist.premPPeriod10GE;
+					flag1 = true;
+				})
+				console.log('/topic/prem-'+htmlPrem+'-curve-day-'+htmlBranch)
+				stompClient.subscribe('/topic/prem-'+htmlPrem+'-curve-day-'+htmlBranch, function(greeting) {
+					var datalist = JSON.parse(greeting.body);
+					console.log(datalist)
+					if (datalist.length > 0) {
+						baofeiData = datalist;
+						baofei(baofeiData)
+					}
+				});
+				//                stompClient.subscribe('/topic/in-force-prem-target', function(greeting) {
+				//                    var datalist = JSON.parse(greeting.body);
+				//					var  newArr = datalist.subsidiary;
+				//                   	if (newArr.length === 0) {
+				//                        return;
+				//                    }
+				//					for(var i =0;i<newArr.length;i++){
+				//					 	dataPlan[i] = {};
+				//                        dataPlan[i].premPPeriod = newArr[i].premPPeriod;
+				//                        dataPlan[i].premPPeriod10 = newArr[i].premPPeriod10;
+				//                        dataPlan[i].branch = newArr[i].branch;
+				//					}
+				//                });
+				stompClient.subscribe('/topic/top-sales-hugecontract', function(data) {
+					var datalist = JSON.parse(data.body);
+					if (datalist.length === 0) {
+						return;
+					}
+					setTimeout(function() {
+						var x = animateten(datalist);
+						if (x.indexOf('undefined') !== -1) {
+							return
+						}
+						$('.bigscore').html(animateten(datalist));
+					}, 3000)
+				})
+				// stompClient.subscribe('/topic/top-sales-yearprem',function(data){
+				//     var datalist = JSON.parse(data.body);
+				//      if (datalist.length === 0) {
+				//         return;
+				//     }
+				//     setTimeout(function(){
+				//         $('.onepeoson').html(animateten(datalist))
+				//     })
+				// })
+				socket.onclose = function() {
+					if (confirm('服务器断开连接，请重新连接')) {
+						location.reload();
+					}
+				};
+			});
+			//             上面的代码是socket
+			function init() {
+				clearInterval(timer2);
+				var c = 0;
+				var d = 0;
+				var num = 0;
+				pro(geArr);
+				pic(picdata0, "期交");
+				map(mapData)
+				if (arrTitle[0] !== 0) {
+					scroll(arrTitle[0], 30);
+				}
+				var lis = $('.tabitem ul li');
+				if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object') {
 
-                        }else {
-                            $('#progressnum').html((arrTitle[0]/2500000000*100).toFixed(2)  + '%');
-                        }
+				} else {
+					$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
+				}
+				var timer2 = setInterval(function() {
+					num += 5;
+					if (num == 5) {
+						pic(picdata0, "期交");
+						if (typeof arrTitle[0] !== 'object') {
+							scroll(arrTitle[0], 30);
+						}
+						pro(geArr);
+						animatetitle('个险', geObj)
+						$(lis).removeClass('current');
+						$(lis[0]).addClass('current');
+						top10(-1, true);
+						if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object') {
+
+						} else {
+							$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
+						}
 						num = 0;
-                    }
-//						else if (num == timerP/2){
-//						pic2(picdata0,dataPlan,"十年期");
-//                        $('#animateTop div').css('fontSize','42px')
-//                        top10(0,false);
-//                        scroll(arrTitle[3]);
-//                        animatename('个险十年期');
-//                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
-//                        }else {
-//                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
-//                        }
-//                    } 
-//                    else if (num  == timerP) {
-//						
-//                        $('#animateTop div').css('fontSize','48px')
-//                        top10(1,false);
-//pic2(picdata1)
-//                        scroll(arrTitle[1], 30);
-//                        pro(yinArr);
-//						num = 0;
-//                        animatetitle('银保', yinObj)
-//                        animatename('银保期交');
-//                        $(lis).removeClass('current');
-//                        $(lis[1]).addClass('current');
-//                        $('#progressnum').html('0%')
-//                    } else if (num == timerB+timerP){
-//                         pic(picdata2)
-//                         scroll(arrTitle[2], 30);
-//                         pro(tuanArr)
-//                         animatetitle('团险', tuanObj);
-//                         animatename('团险');
-//                         $(lis).removeClass('current');
-//                         $(lis[2]).addClass('current');
-//                        num = 0;
-//                    }
-                }, 5000);
-            }
-        })
+					}
+					//						else if (num == timerP/2){
+					//						pic2(picdata0,dataPlan,"十年期");
+					//                        $('#animateTop div').css('fontSize','42px')
+					//                        top10(0,false);
+					//                        scroll(arrTitle[3]);
+					//                        animatename('个险十年期');
+					//                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
+					//                        }else {
+					//                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
+					//                        }
+					//                    } 
+					//                    else if (num  == timerP) {
+					//						
+					//                        $('#animateTop div').css('fontSize','48px')
+					//                        top10(1,false);
+					//pic2(picdata1)
+					//                        scroll(arrTitle[1], 30);
+					//                        pro(yinArr);
+					//						num = 0;
+					//                        animatetitle('银保', yinObj)
+					//                        animatename('银保期交');
+					//                        $(lis).removeClass('current');
+					//                        $(lis[1]).addClass('current');
+					//                        $('#progressnum').html('0%')
+					//                    } else if (num == timerB+timerP){
+					//                         pic(picdata2)
+					//                         scroll(arrTitle[2], 30);
+					//                         pro(tuanArr)
+					//                         animatetitle('团险', tuanObj);
+					//                         animatename('团险');
+					//                         $(lis).removeClass('current');
+					//                         $(lis[2]).addClass('current');
+					//                        num = 0;
+					//                    }
+				}, 5000);
+			}
+		})
 
-    </script>
+	</script>
 </body>
 
 </html>
