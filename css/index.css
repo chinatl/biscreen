@@ -455,8 +455,8 @@ body {
     margin-top: 4px;
     display: flex;
     justify-content: space-around;
-    height: 41px;
-    line-height: 40px;
+    height: 48px;
+    line-height: 48px;
     margin-top: 11px;
     background: linear-gradient(to right, transparent 21%, #0b1e4e);
 }
@@ -733,4 +733,64 @@ body {
 }
 .openHMS {
     display: none
+}
+
+#tabletoday {
+	color:rgb(67,189,235);
+	padding-top: 15px;
+}
+#tabletoday ul {
+	width: 100%;
+}
+#tabletoday ul li {
+	width: 50%;
+	float: left;
+}
+#tabletoday ul li span {
+	color:rgb(67,189,235);
+	font-size: 20px;
+}
+#tabletoday ul li span:nth-of-type(1){
+	margin-right: 20px;
+	width: 120px;
+	text-align: right;
+	display: inline-block
+}
+#tabletoday ul li {
+	margin-top: 4px;
+	white-space: nowrap
+}
+#tabletoday ul li:nth-of-type(even){
+	padding-left: 15px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*中间的数据*/
+
+
+#shownum {
+	color:rgb(67,189,235)
+}
+#shownum  {
+	width: 100%;
+	padding:40px
+}
+#shownum  li {
+	width: 33%;
+	float: left;
+}
+#shownum  li span {
+	color:rgb(67,189,235);
+	font-size: 20px;
+}
+#shownum  li span:nth-of-type(1){
+	margin-right: 20px;
+	width: 120px;
+	text-align: right;
+	display: inline-block
+}
+#shownum  li {
+	margin-top: 15px;
+	white-space: nowrap
 }

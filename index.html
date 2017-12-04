@@ -68,7 +68,7 @@
 				<div class="chartpro boxborder">
 					<span id='chartshow'>单位:万元</span>
 					<div id="pic"></div>
-					<div id='pic1'></div>
+					<ul id='shownum'></ul>
 				</div>
 			</div>
 		</div>
@@ -109,15 +109,19 @@
 					<div class="provice_bottom">
 						<div id="pro"></div>
 						<div id="map"></div>
-						<div id="pro1"></div>
+						<div id="tabletoday">
+							<ul id="leftToday">
+							
+							</ul>
+						</div>
 					</div>
 				</div>
 
 			</div>
 			<div class="list">
 				<div class='boxtitle righttitle' id="checkList">
-					<p class="boxtitle_cn">排行榜</p>
-					<p class="boxtitle_en">Ranking List</p>
+					<p class="boxtitle_cn">录单快报</p>
+					<p class="boxtitle_en">Contract Express</p>
 				</div>
 				<div class='todayItem boxborder'>
 					<div id="selectList">
@@ -182,9 +186,9 @@
                         </div>
 -->
 							<div class="rankinglist">
-								<div class="bigtable">今日大单排行TOP10</div>
+								<div class="bigtable" style='display: none;'>录单快报</div>
 								<ul class="animateten bigscore">
-
+									
 								</ul>
 							</div>
 							<!--
@@ -380,27 +384,26 @@
 					$('.progress').css('display','none')
 					$('#pic').css('height','496px');
 					$('.chartpro').css('height','496px');
+					$('#tabletoday').css('display','none')
+					$('#shownum').css('display','none')
 				}
 				if(type === 'I' && branch !== '610000'){
 					$('.progress').css('display','none')
 					$('.chartpro').css('height','496px');
-					$('#pic').css('height','248px');
-					$('#pic1').css('height','248px');
-					$('#pic1').css('display','block');
+					$('#pic').css('display','none');
 					$('#map').css('display','none');
-					$('#pro1').css('display','block');
+					$('#pro').css('display','none');
 				}
 				if(type === 'R' && branch === '610000'){
 					$('.chartpro').css('height','438px');
 					$('#pic').css('height','438px');
+					$('#tabletoday').css('display','none')
 				}
 				if(type === 'R' && branch !== '610000'){
 					$('.chartpro').css('height','438px');
-					$('#pic').css('height','216px');
-					$('#pic1').css('height','216px');	
+					$('#pic').css('display','none');
 					$('#map').css('display','none');
-					$('#pic1').css('display','block');
-					$('#pro1').css('display','block');
+					$('#pro').css('display','none');
 				}
 			}
 			var urlParams = geturlParam();
@@ -819,7 +822,6 @@
 				var flag1 = false;
 				stompClient.subscribe('/topic/prem-'+paramPrem+'-today-'+paramBranch, function(greeting) {
 					var data = JSON.parse(greeting.body);
-					console.log(data)
 					var newArr = data.subsidiary;
 					if (newArr.length == 0) {
 						return
@@ -909,7 +911,7 @@
 						baofei(baofeiData)
 					}
 				});
-				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-'+paramBranch, function(data) {
+				stompClient.subscribe('/topic/prem-express', function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
@@ -927,7 +929,6 @@
 						location.reload();
 					}
 				};
-				
 			});
 			//             上面的代码是socket
 			function init() {

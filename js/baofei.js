@@ -3,7 +3,7 @@ function baofei(arr) {
 		arr = []
 	}
 	if (arr.length > 6) {
-		arr = arr.slice(0, arr.length - 5);
+		arr = arr.slice(0, arr.length - 6);
 	}
 	var chart = echarts.init(document.getElementById('baofei'));
 	var dataAxis = [];
