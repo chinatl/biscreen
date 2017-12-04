@@ -20,6 +20,21 @@
 	<script src='./js/branchCode.js'></script>
 	<script src='js/countUp.min.js'></script>
 	<script type="text/javascript" src="js/qrcode.min.js"></script>
+	<style>
+/*
+		video {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			min-height: 100%;
+			min-width: 100%;
+			width: auto;
+			height: auto;
+			z-index: -10;
+			-webkit-filter:grayscale(100%)
+		}
+*/
+	</style>
 </head>
 
 <body>
@@ -53,13 +68,14 @@
 				<div class="chartpro boxborder">
 					<span id='chartshow'>单位:万元</span>
 					<div id="pic"></div>
+					<div id='pic1'></div>
 				</div>
 			</div>
 		</div>
 		<div class="toparea">
 			<div class="today">
 				<div class='boxtitle wanyuan'>
-					<p class="boxtitle_cn">当日录单</p>
+					<p class="boxtitle_cn" id='todayprem'>当日录单</p>
 					<p class="boxtitle_en">Daily Inputting Premium</p>
 				</div>
 				<div class='todayItem boxborder'>
@@ -93,6 +109,7 @@
 					<div class="provice_bottom">
 						<div id="pro"></div>
 						<div id="map"></div>
+						<div id="pro1"></div>
 					</div>
 				</div>
 
@@ -213,7 +230,7 @@
 					</div>
 				</div>
 			</div>
-			<!--
+<!--
             <div class="express fr">
                 <div class='boxtitle righttitle'>
                     <p class="boxtitle_cn">大单快报</p>
@@ -227,6 +244,11 @@
 		</div>
 		<!--        弹出层-->
 		<div class="layout">
+<!--
+			<video style='width: 100%' muted loop autoplay id="v1">
+				<source  src="video/test.mov" >
+			</video>
+-->
 			<div id='close'></div>
 			<div class="layers">
 				<div class="timer">
@@ -282,8 +304,8 @@
 				<div class="bigNumber">
 					<div class="one1"><img src="images/txt.png" alt=""></div>
 					<div class="thousand">
-						<img src="images/m2.png" alt="" class="yi">
-						<img src="images/yi.png" alt="" class="_txt">
+<!--						<img src="images/m2.png" alt="" class="yi">-->
+<!--						<img src="images/yi.png" alt="" class="_txt">-->
 					</div>
 				</div>
 			</div>
@@ -310,6 +332,8 @@
 	<script src='./js/baofei.js'></script>
 	<script>
 		$(function() {
+//			var video= document.getElementById('v1');
+//    		video.playbackRate = 0.5;
 			var timerP = 30; //timerP代表个险的时间
 			var timerB = 10; //timerB代表银保的时间
 			/*注意时间只能取5的倍数 这是为了优化浏览器*/
@@ -329,23 +353,44 @@
 			})(window)
 			function geturlParam(){
 				var url = window.location.search;
-				console.log(1)
 				if(url === ''){
-					$('#citySelect li[value="610000"]').addClass('current');
-					$('#module li[name="I"]').addClass('current');
 					return {
 						"cal_type":"I",
-						"branch":"612100"
+						"branch":"610000"
 					}
 				}else {
 					var obj = splitUrl(url.slice(1));
 					var branch = obj.branch || '610000';
 					var cal_type = obj.cal_type || 'I';
-					$('#citySelect li[value="'+branch+'"]').addClass('current');
-					$('#module li[name="'+cal_type+'"]').addClass('current');
 					return obj
 				}
 			}
+			function initPage(type,branch){
+				if(type === undefined){
+					type = 'I'
+				}	
+				if(branch === undefined){
+					branch = '610000'
+				}
+				var name = 	type === 'I' ? '录单' : '实收';
+				$('#module li[name='+type+']').addClass('current');
+				$('#citySelect li[value='+branch+']').addClass('current');
+				$('#todayprem').html('当日'+name);
+				if(type === 'I'){
+					$('.progress').css('display','none')
+				}
+				if(branch !== '610000'){
+					$('#map').css('display','none');
+					$('#pro1').css('display','block');
+					$('#pic1').css('display','block');
+					$('#pic').css('height','248');
+				}
+				
+			}
+			var urlParams = geturlParam();
+			var paramBranch = urlParams.branch;
+			var paramPrem = urlParams.cal_type === 'I'? 'input' : 'inforce';
+			initPage(urlParams.cal_type,urlParams.branch);//初始化
 			function ranking(index) {
 				var ranking = $('.ranking ul li');
 				for (var i = 0; i < ranking.length; i++) {
@@ -640,6 +685,9 @@
 			}
 
 			function scroll(number, num) {
+				if(number === undefined){
+					return 
+				}
 				var number = Math.round(number);
 				number = number + '';
 				if (number.length < 10) {
@@ -684,14 +732,6 @@
 				var demo = new CountUp(selector, a, number, 1, 2.5);
 				demo.start();
 				demo = null;
-				//                var timer = setInterval(function() {
-				//                    a += 1;
-				//                    if (a >= number) {
-				//                        clearInterval(timer);
-				//                        a = number;
-				//                    };
-				//                    $('#' + selector).html(a)
-				//                }, 20)
 			} //数字涨起来
 
 			function sortArr(arr, property) {
@@ -746,9 +786,7 @@
 			var progressP10 = '';
 			var mapData = {};
 			var littleData = 0;
-			var urlParams = geturlParam();
-			var htmlBranch = urlParams.branch;
-			var htmlPrem = urlParams.cal_type === 'I'? 'input' : 'inforce'
+		
 			function getQueryString() {
 				var URL = location.search;
 				if (URL.indexOf('dev=1') !== -1) {
@@ -763,8 +801,9 @@
 			stompClient.connect({}, function(frame) {
 				var flag = true;
 				var flag1 = false;
-				stompClient.subscribe('/topic/today-prem', function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-today-'+paramBranch, function(greeting) {
 					var data = JSON.parse(greeting.body);
+					console.log(data)
 					var newArr = data.subsidiary;
 					if (newArr.length == 0) {
 						return
@@ -808,21 +847,13 @@
 						change_title('geAll', geObj.periodAll);
 					}
 					//个险总保费动画
-					if (flag && flag1) {
+					if (flag) {
 						init();
 						flag = false;
 					}
 
 				});
-				stompClient.subscribe('/topic/top-today-prem-sales', function(greeting) {
-					var datalist = JSON.parse(greeting.body);
-					if (datalist.length === 0) {
-						return;
-					}
-					// animateten(datalist);
-
-				});
-				stompClient.subscribe('/topic/in-force-prem', function(data) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-total-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					var newArr = datalist.subsidiary;
 					if (newArr.length == 0) {
@@ -855,29 +886,14 @@
 					arrTitle[3] = datalist.premPPeriod10GE;
 					flag1 = true;
 				})
-				console.log('/topic/prem-'+htmlPrem+'-curve-day-'+htmlBranch)
-				stompClient.subscribe('/topic/prem-'+htmlPrem+'-curve-day-'+htmlBranch, function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-curve-day-'+paramBranch, function(greeting) {
 					var datalist = JSON.parse(greeting.body);
-					console.log(datalist)
 					if (datalist.length > 0) {
 						baofeiData = datalist;
 						baofei(baofeiData)
 					}
 				});
-				//                stompClient.subscribe('/topic/in-force-prem-target', function(greeting) {
-				//                    var datalist = JSON.parse(greeting.body);
-				//					var  newArr = datalist.subsidiary;
-				//                   	if (newArr.length === 0) {
-				//                        return;
-				//                    }
-				//					for(var i =0;i<newArr.length;i++){
-				//					 	dataPlan[i] = {};
-				//                        dataPlan[i].premPPeriod = newArr[i].premPPeriod;
-				//                        dataPlan[i].premPPeriod10 = newArr[i].premPPeriod10;
-				//                        dataPlan[i].branch = newArr[i].branch;
-				//					}
-				//                });
-				stompClient.subscribe('/topic/top-sales-hugecontract', function(data) {
+				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
@@ -890,20 +906,12 @@
 						$('.bigscore').html(animateten(datalist));
 					}, 3000)
 				})
-				// stompClient.subscribe('/topic/top-sales-yearprem',function(data){
-				//     var datalist = JSON.parse(data.body);
-				//      if (datalist.length === 0) {
-				//         return;
-				//     }
-				//     setTimeout(function(){
-				//         $('.onepeoson').html(animateten(datalist))
-				//     })
-				// })
 				socket.onclose = function() {
 					if (confirm('服务器断开连接，请重新连接')) {
 						location.reload();
 					}
 				};
+				
 			});
 			//             上面的代码是socket
 			function init() {
