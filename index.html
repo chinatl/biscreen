@@ -376,16 +376,32 @@
 				$('#module li[name='+type+']').addClass('current');
 				$('#citySelect li[value='+branch+']').addClass('current');
 				$('#todayprem').html('当日'+name);
-				if(type === 'I'){
+				if(type === 'I' && branch === '610000'){
 					$('.progress').css('display','none')
+					$('#pic').css('height','496px');
+					$('.chartpro').css('height','496px');
 				}
-				if(branch !== '610000'){
+				if(type === 'I' && branch !== '610000'){
+					$('.progress').css('display','none')
+					$('.chartpro').css('height','496px');
+					$('#pic').css('height','248px');
+					$('#pic1').css('height','248px');
+					$('#pic1').css('display','block');
 					$('#map').css('display','none');
 					$('#pro1').css('display','block');
-					$('#pic1').css('display','block');
-					$('#pic').css('height','248');
 				}
-				
+				if(type === 'R' && branch === '610000'){
+					$('.chartpro').css('height','438px');
+					$('#pic').css('height','438px');
+				}
+				if(type === 'R' && branch !== '610000'){
+					$('.chartpro').css('height','438px');
+					$('#pic').css('height','216px');
+					$('#pic1').css('height','216px');	
+					$('#map').css('display','none');
+					$('#pic1').css('display','block');
+					$('#pro1').css('display','block');
+				}
 			}
 			var urlParams = geturlParam();
 			var paramBranch = urlParams.branch;
@@ -926,7 +942,7 @@
 					scroll(arrTitle[0], 30);
 				}
 				var lis = $('.tabitem ul li');
-				if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object') {
+				if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined) {
 
 				} else {
 					$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
@@ -943,7 +959,7 @@
 						$(lis).removeClass('current');
 						$(lis[0]).addClass('current');
 						top10(-1, true);
-						if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object') {
+						if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined ) {
 
 						} else {
 							$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
