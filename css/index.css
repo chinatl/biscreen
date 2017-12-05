@@ -455,8 +455,8 @@ body {
     margin-top: 4px;
     display: flex;
     justify-content: space-around;
-    height: 48px;
-    line-height: 48px;
+    height: 41px;
+    line-height: 41px;
     margin-top: 11px;
     background: linear-gradient(to right, transparent 21%, #0b1e4e);
 }
