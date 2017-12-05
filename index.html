@@ -220,7 +220,7 @@
 					<div id="baofei"></div>
 				</div>
 			</div>
-			<div class="inter fr">
+			<div class="inter fl">
 				<div class='boxtitle righttitle'>
 					<p class="boxtitle_cn" id='provice'>录单快报</p>
 					<p class="boxtitle_en">Contract Express</p>
@@ -230,6 +230,14 @@
 						<ul>
 						</ul>	
 					</div>
+				</div>
+			</div>
+			<div class="insurance fr">
+				<div class='boxtitle righttitle'>
+					<p class="boxtitle_cn" id='provice'>险种排名</p>
+					<p class="boxtitle_en">Insurance Ranking List</p>
+				</div>
+				<div class="insurance_data boxborder">
 					
 				</div>
 			</div>
@@ -359,7 +367,6 @@
 				} //初始页面
 			})(window);
 			var littleWindow = $('#littleWindow')[0];
-			
 			function removeSame (arr){
 				var newArr = [];
 				var flag = true;
@@ -390,9 +397,9 @@
 					clearInterval(timer);
 					var height = $('#littleWindow ul')[0].scrollHeight;
 					$('#littleWindow ul').append(innerHTML);
-					var timer = setInterval(()=>{
+					var timer = setInterval(function(){
 						$('#littleWindow ul')[0].scrollTop ++;
-						if(height - $('#littleWindow ul')[0].scrollTop <= 81){
+						if(height - $('#littleWindow ul')[0].scrollTop <= 82){
 							clearInterval(timer)
 						}
 					},12)
@@ -535,6 +542,7 @@
 					window.location.href = pathName + '?' + urlArr.join('&');
 				}
 			})
+			
 			function splitUrl(str){
 				if(!str){
 					return 
@@ -833,6 +841,23 @@
 				}
 				return newArr.sort(compare(property))
 			}
+			function insurance(arr){
+				if(arr === undefined){
+					return 
+				}
+				var newArr = [];
+				for(var i =0;i<arr.length;i++){
+					var num = arr[i].proportion > .05 ?  arr[i].proportion : .05;
+					newArr.push('<div class="one_insurance">'+
+						'<p class="insurance_title">'+
+						'<span>'+arr[i].polName+'</span>'+
+						'<span>'+Math.round(arr[i].prem/10000)+'万</span>'+
+						'</p>'+
+						'<p class="zhuzi" style="width:'+(num*426)+'px"></p>'+
+						'</div>')
+				}
+				$('.insurance_data').html(newArr.join(''))
+			}
 			//按照对象的字段排序
 			function isgit(number) {
 				var number = number / 1000;
@@ -985,8 +1010,7 @@
 						scrollMessage(removeSame(datalist));
 					}
 				});
-				console.log('/topic/top-sales-hugecontract-'+paramPrem+'-610000')
-				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-610000', function(data) {
+				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
@@ -998,6 +1022,16 @@
 						}
 						$('.bigscore').html(animateten(datalist));
 					}, 3000)
+				})	
+				stompClient.subscribe('/topic/top-pol-'+paramBranch, function(data) {
+					var datalist = JSON.parse(data.body);
+					if(datalist.length ===undefined){
+						return
+					}
+					if (datalist.length === 0) {
+						return;
+					}
+					insurance(datalist);
 				})
 				socket.onclose = function() {
 					if (confirm('服务器断开连接，请重新连接')) {
@@ -1006,7 +1040,6 @@
 				};
 				stompClient.subscribe('/topic/congratulation', function(data){
 					var datalist = JSON.parse(data.body);
-					console.log(datalist,'----')
 					if(datalist !== undefined){
 						getPageParam(datalist);
 					}
