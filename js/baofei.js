@@ -8,7 +8,6 @@ function baofei(arr) {
 	var chart = echarts.init(document.getElementById('baofei'));
 	var dataAxis = [];
 	var data = [];
-
 	function fn(number) {
 		var number = number + '';
 		return number[4] + number[5] + '.' + number[6] + number[7];

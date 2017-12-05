@@ -11,6 +11,7 @@ function pro(arrdata) {
      	data3[i] = arrdata[i].period10;
 		xdata[i] = branchCode[arrdata[i].branch];
 		var sum = (arrdata[i].period3-0)+(arrdata[i].period5-0)+(arrdata[i].period10-0);
+		sum = sum.toFixed(1);
 		if(sum !== 0){
 			leftHtml.push('<li><span>'+branchCode[arrdata[i].branch]+'</span><span>'+sum +'</span></li>')
 		}

@@ -536,9 +536,41 @@ body {
     width: 1337px;
     height: 217px;
     box-sizing: border-box;
-    padding: 18px 0 0 32px;
+    padding: 0px 0 0 18px;
     font-size: 40px;
-    color: #fff;
+    color: #f15246;
+}
+.today_say ul {
+	height: 250px;
+	overflow: auto;
+	padding-top: 0;
+}
+.today_say ul li{
+	font-size: 24px;
+	margin-top: 11px;
+	font-family: "微软雅黑"
+}
+/*滚动条透明*/
+.today_say ul::-webkit-scrollbar-track-piece{
+    background-color:transparent;
+    -webkit-border-radius:0;
+}
+.today_say ul::-webkit-scrollbar{
+    width:0px;
+    height:0px;
+}
+.today_say ul::-webkit-scrollbar-thumb{
+    height:50px;
+    background-color:transparent;
+    -webkit-border-radius:4px;
+    outline:2px solid #fff;
+    outline-offset:-2px;
+    border: 2px solid #fff;
+}
+.today_say ul::-webkit-scrollbar-thumb:hover{
+    height:50px;
+    background-color:transparent;
+    -webkit-border-radius:4px;
 }
 .wait {
     width: 1050px;
@@ -586,13 +618,14 @@ body {
     bottom: 0;
     right: 0;
     z-index: 20;
-/*    background: url(../images/12.png) no-repeat left top;*/
+    background: url(../images/background.jpg) no-repeat left top;
+	background-size: cover;
     display: none;
 }
 
 .layout .layers {
     margin: 268px auto;
-    width: 1600px;
+    width: 1800px;
     height: 400px;
 }
 
@@ -658,8 +691,15 @@ body {
 .timer_bottom {
     margin-top: 10px;
     margin-left: -16px;
+	position: relative;
 }
-
+#provincepic {
+	width: 104px;
+	position: absolute;
+	top: 1px;
+	left:89px
+}
+/**/
 .splitline {
     width: 6px;
     height: 373px;
@@ -674,28 +714,27 @@ body {
     float: left;
     margin-left: 40px;
 }
-
+.bigNumber .one1 {
+	overflow: hidden
+}
 .bigNumber .one1 img {
     height: 55px;
+	float: left
 }
-
+#allType {
+	margin-left: -16px;
+}
 .thousand {
     /*    height: 260px;*/
+	width: 800px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .thousand img {
-    float: left;
-}
-
-.thousand img.yi {
-    width: 190px;
-    margin-top: -8px;
-    margin-left: 100px;
-}
-
-.thousand img._txt {
-    width: 440px;
-    margin-top: -108px;
+	width: 100px;
+	vertical-align: bottom
 }
 
 #close {
