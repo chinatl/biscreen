@@ -567,7 +567,11 @@
 				$($('.second span')[1]).html(str[5]);
 			}
 			function getPageParam(obj){
-				console.log(obj)
+				if(obj.close === true){
+					$('.layout').css('display','none');
+					return 
+				}
+				$('.layout').css('display','block');
 				changeYMD(obj.year + ''+ obj.month + '' + obj.day);
 				changeHMS(obj.hour + '' + obj.minute + '' + obj.second);
 				$('#provincepic').attr('src',"images/"+obj.province+".png" );
@@ -579,17 +583,15 @@
 				for(var i =0;i<obj.number.length;i++){
 					newArr.push('<img src="images/m'+obj.number[i]+'.png" alt="" class="yi">')
 				}
-				$('.thousand').html(newArr.join('')+str)
-			}
-			var timerplayer = setInterval(function(){
-				var a = localStorage.getItem('a');
-				if(a){
-					var x = JSON.parse(a);
-					$('.layout').css('display','block')
-					getPageParam(x);
-					clearInterval(timerplayer)
+				$('.thousand').html(newArr.join('')+str);
+				if(obj.danwei === 'wan'){
+					$('.thousand img._txt').width('180px')
 				}
-			},1000)
+				if(obj.danwei === 'yi'){
+					$('.thousand img.yi').width('206px')
+				}
+			}
+			
 			function changeTime() {
 				var nowtime = new Date();
 				var year = nowtime.getFullYear();
@@ -986,7 +988,6 @@
 				console.log('/topic/top-sales-hugecontract-'+paramPrem+'-610000')
 				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-610000', function(data) {
 					var datalist = JSON.parse(data.body);
-					console.log(datalist)
 					if (datalist.length === 0) {
 						return;
 					}
@@ -1003,6 +1004,14 @@
 						location.reload();
 					}
 				};
+				stompClient.subscribe('/topic/congratulation', function(data){
+					var datalist = JSON.parse(data.body);
+					console.log(datalist,'----')
+					if(datalist !== undefined){
+						getPageParam(datalist);
+					}
+
+				})
 			});
 			//             上面的代码是socket
 			function init() {

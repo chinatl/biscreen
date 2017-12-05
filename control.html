@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="js/jquery.min.js"></script>
+	<script src='./js/jquery.min.js'></script>
+	<script src='./js/sock.js'></script>
+	<script src='./js/stomp.min.js'></script>
 	<style>
 		.layout {
 			width: 1000px;
@@ -46,11 +48,11 @@
 		</div>
 		<div>
 			<label for="">日期:</label>
-			<input type="number" id="year">年<input type="number" id="month">月<input type="number" id='day'>日
+			<input type="number" id="year" value="2017">年<input type="number" id="month" value="12">月<input type="number" id='day' value='05'>日
 		</div>
 		<div>
 			<label for="">时间:</label>
-			<input type="number" id="hour">时<input type="number" id="minute">分<input type="number" id="second">秒
+			<input type="number" id="hour" value='12'>时<input type="number" id="minute" value="12">分<input type="number" id="second" value="12">秒
 		</div>
 		<div>
 			<label for="">类别:</label>
@@ -61,16 +63,16 @@
 		</div>
 		<div>
 			<label for="">保费:</label>
-			<input type="number" id="baofei">
+			<input type="number" id="baofei" value="0">
 		</div>
 		<div>
 			<label for="">单位:</label>
 			<ul class="selectli" id="num">
-				<li name="wan" class="current">万</li>
-				<li name="yi">亿</li>
+				<li name="wan">万</li>
+				<li name="yi" class="current">亿</li>
 			</ul>
 		</div>
-		<div><button id="btn">确定</button></div>
+		<div><button id="btn">确定</button><button id="cancel">取消</button></div>
 	</div>
 	<script>
 		$(function(){
@@ -86,21 +88,50 @@
 				$('#num li').removeClass('current');
 				$(this).addClass('current')
 			})
-			$('#btn').on('click',function(){
-				var obj = {};
-				obj.province = $('#citySelect li.current').attr('name');
-				obj.year = $('#year').val();
-				obj.month = $('#month').val();
-				obj.day = $('#day').val();
-				obj.hour = $('#hour').val();
-				obj.minute = $('#minute').val();
-				obj.second = $('#second').val();
-				obj.type = $('#module li.current').attr('name');
-				obj.number = $('#baofei').val();
-				obj.danwei = $('#num li.current').attr('name');
-				console.log(obj);
-				localStorage.setItem('a',JSON.stringify(obj))
-			})
+			
+			function getQueryString() {
+				var URL = location.search;
+				if (URL.indexOf('dev=1') !== -1) {
+					return '7001'
+				} else {
+					return '17001'
+				}
+			}
+			var PORT = getQueryString();
+			var socket = new SockJS('http://10.184.1.22:' + PORT + '/websocket');
+			stompClient = Stomp.over(socket);
+
+			stompClient.connect({}, function(frame) {
+				stompClient.subscribe('/topic/congratulation', function(data){
+					console.log(data)
+				})
+			
+
+			 	$('#btn').on('click',function(){
+					var obj = {};
+					obj.close = false;
+					obj.province = $('#citySelect li.current').attr('name');
+					obj.year = $('#year').val();
+					obj.day = $('#day').val();
+					obj.month = $('#month').val();
+					obj.hour = $('#hour').val();
+					obj.minute = $('#minute').val();
+					obj.second = $('#second').val();
+					obj.type = $('#module li.current').attr('name');
+					obj.number = $('#baofei').val();
+					obj.danwei = $('#num li.current').attr('name');
+				 	stompClient.send("/topic/congratulation", {atytopic:"greetings"}, JSON.stringify(obj));
+
+				})
+				$('#cancel').on('click',function(){
+					stompClient.send("/topic/congratulation", {atytopic:"greetings"}, JSON.stringify({close:true}));
+				})
+				socket.onclose = function() {
+					if (confirm('服务器断开连接，请重新连接')) {
+						location.reload();
+					}
+				};
+			});
 		})
 	</script>
 </body>

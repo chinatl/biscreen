@@ -618,14 +618,14 @@ body {
     bottom: 0;
     right: 0;
     z-index: 20;
-    background: url(../images/background.jpg) no-repeat left top;
+    background: url(../images/background.png) no-repeat left top;
 	background-size: cover;
     display: none;
 }
 
 .layout .layers {
     margin: 268px auto;
-    width: 1800px;
+    width: 1760px;
     height: 400px;
 }
 
@@ -729,14 +729,17 @@ body {
 	width: 800px;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
+	padding-left: 100px;
 }
 
 .thousand img {
-	width: 100px;
+	width: 170px;
 	vertical-align: bottom
 }
-
+.thousand img._txt {
+	width: 350px;
+}
 #close {
     position: absolute;
     right: 0;
