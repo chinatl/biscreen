@@ -734,7 +734,7 @@ body {
 	margin-left: -16px;
 }
 .thousand {
-    /*    height: 260px;*/
+    height: 278px;
 	width: 800px;
 	display: flex;
 	justify-content: center;
@@ -854,6 +854,9 @@ body {
 	color:#43bdeb;
 	display: flex;
 	justify-content: space-between;
+}
+.one_insurance .insurance_title {
+	white-space: nowrap
 }
 .one_insurance .zhuzi {
 	background-color: #43bdeb;
