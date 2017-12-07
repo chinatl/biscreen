@@ -77,7 +77,7 @@ function pro(arrdata) {
             data: xdata
         },
         series: [{
-                barWidth: '35%',
+                barWidth: '18px',
                 type: 'bar',
                 stack: '总量',
                 z: 3,

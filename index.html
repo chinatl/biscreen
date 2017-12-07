@@ -436,6 +436,7 @@
 					$('.chartpro').css('height','496px');
 					$('#tabletoday').css('display','none')
 					$('#shownum').css('display','none')
+					$('#allProvince').html('全省当日录单TOP10')
 				}
 				if(type === 'I' && branch !== '610000'){
 					$('.progress').css('display','none')
@@ -443,6 +444,7 @@
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
+					$('#allProvince').html(branchCode[branch]+'当日录单TOP10')
 				}
 				if(type === 'R' && branch === '610000'){
 					$('.chartpro').css('height','438px');
@@ -456,7 +458,8 @@
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
-					$('#allProvince').html('全省当日实收TOP10')
+					$('#allProvince').html(branchCode[branch]+'当日实收TOP10')
+
 				}
 			}
 			var urlParams = geturlParam();
