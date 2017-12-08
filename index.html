@@ -1021,7 +1021,7 @@
 						scrollMessage(removeSame(datalist));
 					}
 				});
-				stompClient.subscribe('/topic/top-sales-hugecontract-'+"input"+'-'+paramBranch, function(data) {
+				stompClient.subscribe('/topic/top-sales-hugecontract-'+'input'+'-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
