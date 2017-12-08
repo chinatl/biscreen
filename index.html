@@ -1005,7 +1005,6 @@
 				});
 				stompClient.subscribe('/topic/prem-express', function(greeting) {
 					var datalist = JSON.parse(greeting.body);
-					console.log(datalist)
 					if(datalist === undefined){
 						return 
 					}
@@ -1075,6 +1074,7 @@
 							scroll(arrTitle[0], 30);
 						}
 						pro(geArr);
+						map(mapData)
 						animatetitle('个险', geObj)
 						$(lis).removeClass('current');
 						$(lis[0]).addClass('current');
