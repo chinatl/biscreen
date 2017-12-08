@@ -604,26 +604,26 @@ chart.setOption({
         pieces: [
             {
                 min: 0,
-                max: 5
-            },
-            {
-                min: 5,
-                max: 10
-            },
-            {
-                min: 10,
-                max: 50
-            },
-            {
-                min: 50,
-                max: 100
-            },
-            {
-                min: 100,
                 max: 200
             },
             {
-                min: 200
+                min: 200,
+                max: 400
+            },
+            {
+                min: 400,
+                max: 600
+            },
+            {
+                min: 600,
+                max: 800
+            },
+            {
+                min: 800,
+                max: 1000
+            },
+            {
+                min: 1000
             }, // 不指定 max，表示 max 为无限大（Infinity）。
         ],
         inRange: {
