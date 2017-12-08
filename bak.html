@@ -412,13 +412,13 @@
 				var url = window.location.search;
 				if(url === ''){
 					return {
-						"cal_type":"I",
+						"cal_type":"R",
 						"branch":"610000"
 					}
 				}else {
 					var obj = splitUrl(url.slice(1));
 					var branch = obj.branch || '610000';
-					var cal_type = obj.cal_type || 'I';
+					var cal_type = obj.cal_type || 'R';
 					return obj
 				}
 			}
@@ -429,7 +429,7 @@
 				if(branch === undefined){
 					branch = '610000'
 				}
-				var name = 	type === 'I' ? '录单' : '录单';
+				var name = 	type === 'I' ? '录单' : '实收';
 				$('#module li[name='+type+']').addClass('current');
 				$('#citySelect li[value='+branch+']').addClass('current');
 				$('#todayprem').html('当日'+name);
@@ -437,8 +437,8 @@
 					$('.progress').css('display','none')
 					$('#pic').css('height','496px');
 					$('.chartpro').css('height','496px');
-					$('#tabletoday').css('display','none');
-					$('#shownum').css('display','none');
+					$('#tabletoday').css('display','none')
+					$('#shownum').css('display','none')
 					$('#allProvince').html('全省当日录单TOP10')
 				}
 				if(type === 'I' && branch !== '610000'){
@@ -455,19 +455,17 @@
 					$('#pic').css('height','438px');
 					$('#tabletoday').css('display','none')
 					$('#shownum').css('display','none');
-					// $('#allProvince').html('全省当日实收TOP10');
-					// $('#todayprem_en').html('Daily Inforcing Premium');
+					$('#allProvince').html('全省当日实收TOP10');
+					$('#todayprem_en').html('Daily Inforcing Premium');
 				}
 				if(type === 'R' && branch !== '610000'){
-					// $('#todayprem_en').html('Daily Inforcing Premium');
+					$('#todayprem_en').html('Daily Inforcing Premium');
 					$('.chartpro').css('marginTop','260px');
 					$('.chartpro').css('height','438px');
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
-					$('#allProvince').html(branchCode[branch]+'当日录单TOP10')
-
-					// $('#allProvince').html(branchCode[branch]+'当日实收TOP10');
+					$('#allProvince').html(branchCode[branch]+'当日实收TOP10');
 
 				}
 			}
@@ -921,7 +919,7 @@
 			stompClient.connect({}, function(frame) {
 				var flag = true;
 				var flag1 = false;
-				stompClient.subscribe('/topic/prem-'+'input'+'-today-'+paramBranch, function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-today-'+paramBranch, function(greeting) {
 					var data = JSON.parse(greeting.body);
 					var newArr = data.subsidiary;
 					if (newArr.length == 0) {
@@ -1005,7 +1003,7 @@
 					arrTitle[3] = datalist.premPPeriod10GE;
 					flag1 = true;
 				})
-				stompClient.subscribe('/topic/prem-'+'input'+'-curve-day-'+paramBranch, function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-curve-day-'+paramBranch, function(greeting) {
 					var datalist = JSON.parse(greeting.body);
 					if (datalist.length > 0) {
 						baofeiData = datalist;
@@ -1021,7 +1019,7 @@
 						scrollMessage(removeSame(datalist));
 					}
 				});
-				stompClient.subscribe('/topic/top-sales-hugecontract-'+"input"+'-'+paramBranch, function(data) {
+				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
