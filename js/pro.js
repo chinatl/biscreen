@@ -28,7 +28,7 @@ function pro(arrdata) {
     let option = {
         grid: {
             left: '0%',
-            right: '26%',
+            right: '30%',
             bottom: '8%',
             top: '8%',
             containLabel: true
