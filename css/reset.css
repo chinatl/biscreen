@@ -104,6 +104,7 @@ li {
 .boxtitle {
     padding-bottom: 10px;
     position: relative;
+    z-index: 30
 }
 
 .boxtitle .boxtitle_cn {

@@ -65,18 +65,15 @@
 					</ul>
 				</div>
 				<div class="progress">开门红进度:<span id='progressnum'>0%</span></div>
-				<div class="chartpro boxborder">
-					<span id='chartshow'>单位:万元</span>
-					<div id="pic"></div>
-					<ul id='shownum'></ul>
-				</div>
+				
 			</div>
 		</div>
+
 		<div class="toparea">
 			<div class="today">
 				<div class='boxtitle wanyuan'>
 					<p class="boxtitle_cn" id='todayprem'>当日录单</p>
-					<p class="boxtitle_en">Daily Inputting Premium</p>
+					<p class="boxtitle_en" id='todayprem_en'>Daily Inputting Premium</p>
 				</div>
 				<div class='todayItem boxborder'>
 					<div class="provice_top">
@@ -118,6 +115,11 @@
 				</div>
 
 			</div>
+		<div class="chartpro boxborder fl">
+			<span id='chartshow'>单位:万元</span>
+			<div id="pic"></div>
+			<ul id='shownum'></ul>
+		</div>
 			<div class="list">
 				<div class='boxtitle righttitle' id="checkList">
 					<p class="boxtitle_cn">排行榜</p>
@@ -449,17 +451,21 @@
 				}
 				if(type === 'R' && branch === '610000'){
 					$('.chartpro').css('height','438px');
+					$('.chartpro').css('marginTop','270px');
 					$('#pic').css('height','438px');
 					$('#tabletoday').css('display','none')
 					$('#shownum').css('display','none');
-					$('#allProvince').html('全省当日实收TOP10')
+					$('#allProvince').html('全省当日实收TOP10');
+					$('#todayprem_en').html('Daily Inforcing Premium');
 				}
 				if(type === 'R' && branch !== '610000'){
+					$('#todayprem_en').html('Daily Inforcing Premium');
+					$('.chartpro').css('marginTop','260px');
 					$('.chartpro').css('height','438px');
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
-					$('#allProvince').html(branchCode[branch]+'当日实收TOP10')
+					$('#allProvince').html(branchCode[branch]+'当日实收TOP10');
 
 				}
 			}
