@@ -390,7 +390,8 @@
 				}
 				var htmlArr = [];
 				for(var i =0;i<newArr.length;i++){
-					htmlArr.push('<li>热烈祝贺'+branchCode[newArr[i].salesBranchCode]+''+newArr[i].salesName +'伙伴开门红录单'+newArr[i].prem+'元！</li>')
+					var num = (newArr[i].prem+'').replace(/\d(?=(?:\d{3})+\b)/g,'$&,')
+					htmlArr.push('<li>热烈祝贺'+branchCode[newArr[i].salesBranchCode]+''+newArr[i].salesName +'伙伴开门红录单'+num+'元！</li>')
 				}
 				message(htmlArr.join(''))
 				function message(innerHTML){
