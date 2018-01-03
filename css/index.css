@@ -200,16 +200,17 @@ body {
     font: normal bold 48px '微软雅黑';
     color: #F7E5BF;
     padding-left: 320px;
-    height: 64px;
+    height: 55px;
     position: relative;
     overflow: hidden;
-    margin-top: 18px;
+    margin-top: 25px;
 }
 
 #animateTop {
     position: absolute;
     top: 0;
     left: 320px;
+    font-size: 37px;
 }
 
 .scrollnumber {

@@ -1,5 +1,4 @@
 function pic(arrdata) {
-	console.log(arrdata)
 	function compare(property) {
 		return function (a, b) {
 			var value1 = a[property];

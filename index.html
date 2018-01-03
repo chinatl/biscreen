@@ -43,8 +43,8 @@
 			<div class="bgTitleArea">
 				<div class="t">
 					<div id="animateTop">
-						<div>开门红个险期交</div>
-						<div>开门红个险期交</div>
+						<div>陕西开门红个险期交</div>
+						<div>陕西开门红个险期交</div>
 					</div>
 				</div>
 				<div class="scrollnumber">
@@ -127,13 +127,13 @@
 				</div>
 				<div class='todayItem boxborder'>
 					<div id="selectList">
-						<div>
+					<!-- 	<div>
 							<h3 class="selectTitle">模式</h3>
 							<ul class="selectli" id="module">
 								<li name="I">录单</li>
 								<li name="R">实收</li>
 							</ul>
-						</div>
+						</div> -->
 						<div>
 							<h3 class="selectTitle">机构</h3>
 							<ul class="selectli" id="citySelect">
@@ -188,7 +188,7 @@
                         </div>
 -->
 							<div class="rankinglist">
-								<div class="bigtable" id='allProvince'>全省当日录单TOP10</div>
+								<div class="bigtable" id='allProvince'>当日录单TOP10</div>
 								<ul class="animateten bigscore">
 									
 								</ul>
@@ -360,7 +360,11 @@
 					var height = window.screen.height;
 					var x = width / 1920;
 					var container = $('.container')[0];
-					container.style.transform = 'scale(' + x + ')';
+					if(width > 1920){
+						container.style.transform = 'scale(1)';
+					}else {
+						container.style.transform = 'scale(' + x + ')';
+					}
 					document.body.style.backgroundSize = width + 'px ' + (height + 100) + 'px';
 				}
 				fn();
@@ -418,7 +422,7 @@
 				}else {
 					var obj = splitUrl(url.slice(1));
 					var branch = obj.branch || '610000';
-					var cal_type = obj.cal_type || 'I';
+					var cal_type = obj.cal_type || 'R';
 					return obj
 				}
 			}
@@ -429,17 +433,18 @@
 				if(branch === undefined){
 					branch = '610000'
 				}
-				var name = 	type === 'I' ? '录单' : '录单';
+				var name = 	type === 'I' ? '录单' : '实收';
 				$('#module li[name='+type+']').addClass('current');
 				$('#citySelect li[value='+branch+']').addClass('current');
 				$('#todayprem').html('当日'+name);
 				if(type === 'I' && branch === '610000'){
+						$('#animateTop div').html('陕西开门红个险期交')
 					$('.progress').css('display','none')
 					$('#pic').css('height','496px');
 					$('.chartpro').css('height','496px');
-					$('#tabletoday').css('display','none');
-					$('#shownum').css('display','none');
-					$('#allProvince').html('全省当日录单TOP10')
+					$('#tabletoday').css('display','none')
+					$('#shownum').css('display','none')
+					$('#allProvince').html('当日录单TOP10')
 				}
 				if(type === 'I' && branch !== '610000'){
 					$('.progress').css('display','none')
@@ -447,28 +452,30 @@
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
-					$('#allProvince').html(branchCode[branch]+'当日录单TOP10')
+					// $('#allProvince').html(branchCode[branch]+'当日录单TOP10')
+					$('#allProvince').html('当日录单TOP10');
+						$('#animateTop div').html(branchCode[branch]+'开门红个险期交')
 				}
 				if(type === 'R' && branch === '610000'){
+						$('#animateTop div').html('陕西开门红个险期交')
 					$('.chartpro').css('height','438px');
 					$('.chartpro').css('marginTop','270px');
 					$('#pic').css('height','438px');
 					$('#tabletoday').css('display','none')
 					$('#shownum').css('display','none');
-					// $('#allProvince').html('全省当日实收TOP10');
-					// $('#todayprem_en').html('Daily Inforcing Premium');
+					$('#allProvince').html('当日实收TOP10');
+					$('#todayprem_en').html('Daily Inforcing Premium');
 				}
 				if(type === 'R' && branch !== '610000'){
-					// $('#todayprem_en').html('Daily Inforcing Premium');
+					$('#todayprem_en').html('Daily Inforcing Premium');
 					$('.chartpro').css('marginTop','260px');
 					$('.chartpro').css('height','438px');
 					$('#pic').css('display','none');
 					$('#map').css('display','none');
 					$('#pro').css('display','none');
-					$('#allProvince').html(branchCode[branch]+'当日录单TOP10')
-
 					// $('#allProvince').html(branchCode[branch]+'当日实收TOP10');
-
+					$('#allProvince').html('当日实收TOP10');
+					$('#animateTop div').html(branchCode[branch]+'开门红个险期交')
 				}
 			}
 			var urlParams = geturlParam();
@@ -535,7 +542,7 @@
 				$('#selectList').slideToggle(400)
 			})
 			$('#agreecity').on('click',function(){
-				var cal_type = $('#module li.current').attr('name');
+				var cal_type = $('#module li.current').attr('name') || 'I';
 				var branch = $('#citySelect li.current').attr('value');
 				var url = window.location.search;
 				var pathName = window.location.pathname;
@@ -907,6 +914,8 @@
 			var mapData = {};
 			var littleData = 0;
 			var target = [];
+			var targetNum = 1;
+			var finishNum = 0;
 			function getQueryString() {
 				var URL = location.search;
 				if (URL.indexOf('dev=1') !== -1) {
@@ -921,41 +930,42 @@
 			stompClient.connect({}, function(frame) {
 				var flag = true;
 				var flag1 = false;
-				stompClient.subscribe('/topic/prem-'+'input'+'-today-'+paramBranch, function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-today-'+paramBranch, function(greeting) {
 					var data = JSON.parse(greeting.body);
+					console.log(data)
 					var newArr = data.subsidiary;
 					if (newArr.length == 0) {
 						return
 					}
 					mapData = data.subsidiary;
-					var geSortArr = sortArr(newArr, 'premP')
+					var geSortArr = sortArr(newArr, 'premPPeriod')
 					var yinSortArr = sortArr(newArr, 'premB')
 					var tuanSortArr = sortArr(newArr, 'premG')
 					for (var i = 0; i < newArr.length; i++) {
 						geArr[i] = {};
-						geArr[i].period3 = threenum(geSortArr[i].premPPeriod3);
-						geArr[i].period5 = threenum(geSortArr[i].premPPeriod5To9);
-						geArr[i].period10 = threenum(geSortArr[i].premPPeriod10GE);
+						geArr[i].period3 = geSortArr[i].premPPeriod3;
+						geArr[i].period5 = geSortArr[i].premPPeriod5To9;
+						geArr[i].period10 = geSortArr[i].premPPeriod10GE;
 						geArr[i].branch = geSortArr[i].branch;
 
 						yinArr[i] = {};
-						yinArr[i].period10 = threenum(yinSortArr[i].premB);
+						yinArr[i].period10 = yinSortArr[i].premB;
 						yinArr[i].branch = yinSortArr[i].branch;
 
 						tuanArr[i] = {}
-						tuanArr[i].period10 = threenum(tuanSortArr[i].premG);
+						tuanArr[i].period10 = tuanSortArr[i].premG;
 						tuanArr[i].branch = tuanSortArr[i].branch;
 					}
 
-					geObj.periodAll = threenum(data.premP);
-					geObj.period10 = threenum(data.premPPeriod10GE)
-					geObj.period3 = threenum(data.premPPeriod3)
-					geObj.period5 = threenum(data.premPPeriod5To9)
+					geObj.periodAll = data.premPPeriod;
+					geObj.period10 = data.premPPeriod10GE;
+					geObj.period3 = data.premPPeriod3;
+					geObj.period5 = data.premPPeriod5To9;
 
-					yinObj.periodAll = threenum(data.premB);
-					yinObj.qijiao = threenum(data.premBPeriod)
+					yinObj.periodAll = data.premB;
+					yinObj.qijiao = data.premBPeriod;
 
-					tuanObj.periodAll = threenum(data.premG);
+					tuanObj.periodAll = data.premG;
 					if (yinObj.periodAll) {
 						change_title('yinAll', yinObj.periodAll);
 					}
@@ -972,6 +982,25 @@
 					}
 
 				});
+				stompClient.subscribe('/topic/in-force-prem-target',function(data){
+					var datalist = JSON.parse(data.body);
+					if(datalist === undefined){
+						return 
+					}
+					if(paramBranch === '610000'){
+						targetNum = datalist.premPPeriod;
+					}else {
+						var subsidiary = datalist.subsidiary;
+						for(var i =0 ;i<subsidiary.length;i++){
+							if(paramBranch  == subsidiary[i].branch){
+								targetNum = subsidiary[i].premPPeriod;
+								console.log(targetNum)
+								break;
+							}
+						}
+					}
+					
+				})
 				stompClient.subscribe('/topic/prem-'+paramPrem+'-total-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					var newArr = datalist.subsidiary;
@@ -1004,8 +1033,15 @@
 					arrTitle[2] = datalist.premG;
 					arrTitle[3] = datalist.premPPeriod10GE;
 					flag1 = true;
+					pic(picdata0, "期交");
+					scroll(arrTitle[0], 30);
+					if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined || targetNum === 1 ) {
+
+					} else {
+						$('#progressnum').html((arrTitle[0]/ targetNum * 100).toFixed(2) + '%');
+					}
 				})
-				stompClient.subscribe('/topic/prem-'+'input'+'-curve-day-'+paramBranch, function(greeting) {
+				stompClient.subscribe('/topic/prem-'+paramPrem+'-curve-day-'+paramBranch, function(greeting) {
 					var datalist = JSON.parse(greeting.body);
 					if (datalist.length > 0) {
 						baofeiData = datalist;
@@ -1021,7 +1057,7 @@
 						scrollMessage(removeSame(datalist));
 					}
 				});
-				stompClient.subscribe('/topic/top-sales-hugecontract-'+'input'+'-'+paramBranch, function(data) {
+				stompClient.subscribe('/topic/top-sales-hugecontract-'+paramPrem+'-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					if (datalist.length === 0) {
 						return;
@@ -1064,71 +1100,16 @@
 				var d = 0;
 				var num = 0;
 				pro(geArr);
-				pic(picdata0, "期交");
 				map(mapData)
-				if (arrTitle[0] !== 0) {
-					scroll(arrTitle[0], 30);
-				}
-				var lis = $('.tabitem ul li');
-				if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined) {
-
-				} else {
-					$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
-				}
 				var timer2 = setInterval(function() {
 					num += 5;
 					if (num == 5) {
-						pic(picdata0, "期交");
-						if (typeof arrTitle[0] !== 'object') {
-							scroll(arrTitle[0], 30);
-						}
 						pro(geArr);
 						map(mapData)
 						animatetitle('个险', geObj)
-						$(lis).removeClass('current');
-						$(lis[0]).addClass('current');
 						top10(-1, true);
-						if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined ) {
-
-						} else {
-							$('#progressnum').html((arrTitle[0] / 2500000000 * 100).toFixed(2) + '%');
-						}
 						num = 0;
 					}
-					//						else if (num == timerP/2){
-					//						pic2(picdata0,dataPlan,"十年期");
-					//                        $('#animateTop div').css('fontSize','42px')
-					//                        top10(0,false);
-					//                        scroll(arrTitle[3]);
-					//                        animatename('个险十年期');
-					//                         if(arrTitle[0] === 0 || typeof arrTitle[0] === 'object' ){
-					//                        }else {
-					//                            $('#progressnum').html((arrTitle[3]/100000000*100).toFixed(2)  + '%');
-					//                        }
-					//                    } 
-					//                    else if (num  == timerP) {
-					//						
-					//                        $('#animateTop div').css('fontSize','48px')
-					//                        top10(1,false);
-					//pic2(picdata1)
-					//                        scroll(arrTitle[1], 30);
-					//                        pro(yinArr);
-					//						num = 0;
-					//                        animatetitle('银保', yinObj)
-					//                        animatename('银保期交');
-					//                        $(lis).removeClass('current');
-					//                        $(lis[1]).addClass('current');
-					//                        $('#progressnum').html('0%')
-					//                    } else if (num == timerB+timerP){
-					//                         pic(picdata2)
-					//                         scroll(arrTitle[2], 30);
-					//                         pro(tuanArr)
-					//                         animatetitle('团险', tuanObj);
-					//                         animatename('团险');
-					//                         $(lis).removeClass('current');
-					//                         $(lis[2]).addClass('current');
-					//                        num = 0;
-					//                    }
 				}, 5000);
 			}
 		})
