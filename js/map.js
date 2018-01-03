@@ -6,7 +6,7 @@ function convertData(data) {
     for (var i = 0; i < data.length; i++) {
         var geoCoord = geoCoordMap[data[i].branch];
         if (geoCoord) {
-            res.push(geoCoord.concat(data[i].premP/10000));
+            res.push(geoCoord.concat(data[i].premPPeriod));
         }
     }
     return res;

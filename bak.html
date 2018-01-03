@@ -932,6 +932,7 @@
 				var flag1 = false;
 				stompClient.subscribe('/topic/prem-'+paramPrem+'-today-'+paramBranch, function(greeting) {
 					var data = JSON.parse(greeting.body);
+					console.log(data)
 					var newArr = data.subsidiary;
 					if (newArr.length == 0) {
 						return
