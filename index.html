@@ -39,6 +39,7 @@
 
 <body>
 	<div class="container">
+
 		<div class="bgTitle">
 			<div class="bgTitleArea">
 				<div class="t">
@@ -1003,6 +1004,7 @@
 				stompClient.subscribe('/topic/prem-'+paramPrem+'-total-'+paramBranch, function(data) {
 					var datalist = JSON.parse(data.body);
 					var newArr = datalist.subsidiary;
+					console.log(datalist)
 					if (newArr.length == 0) {
 						return
 					}
@@ -1014,7 +1016,7 @@
 					}
 					for (var i = 0; i < newArr.length; i++) {
 						picdata0[i] = {};
-						picdata0[i].data = threenum(newArr[i].premP);
+						picdata0[i].data = threenum(newArr[i].premPPeriod);
 						picdata0[i].premPPeriod = threenum(newArr[i].premPPeriod);
 						picdata0[i].premPPeriod10GE = threenum(newArr[i].premPPeriod10GE);
 						picdata0[i].branch = newArr[i].branch;
@@ -1032,6 +1034,7 @@
 					arrTitle[2] = datalist.premG;
 					arrTitle[3] = datalist.premPPeriod10GE;
 					flag1 = true;
+					console.log(picdata0)
 					pic(picdata0, "期交");
 					scroll(arrTitle[0], 30);
 					if (arrTitle[0] === 0 || typeof arrTitle[0] === 'object' || arrTitle[0] === undefined || targetNum === 1 ) {
